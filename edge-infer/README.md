@@ -1,3 +1,5 @@
+> CoTriage-Nova: this top-level service now uses Java 25. Build from the repository root with `./mvnw -pl edge-infer -am -DskipTests package`. See [migration notes](../migration/README.md) for compatibility boundaries.
+
 # edge-infer
 
 Cotriage 边缘实时推理组件。当前 MVP 实现：
@@ -20,7 +22,7 @@ Cotriage 边缘实时推理组件。当前 MVP 实现：
 
 ```bash
 cd edge-infer
-REDIS_ADDR=127.0.0.1:6379 go run ./cmd/edge-infer
+REDIS_ADDR=127.0.0.1:6379 java -Xms64m -Xmx256m -jar target/edge-infer-0.1.0-SNAPSHOT.jar
 ```
 
 使用示例配置：
@@ -29,7 +31,7 @@ REDIS_ADDR=127.0.0.1:6379 go run ./cmd/edge-infer
 RULES_FILE=./config/rules.example.json \
 TEMPLATES_FILE=./config/templates.example.json \
 REDIS_ADDR=127.0.0.1:6379 \
-go run ./cmd/edge-infer
+java -Xms64m -Xmx256m -jar target/edge-infer-0.1.0-SNAPSHOT.jar
 ```
 
 启用 MiniLM ONNX 分类器：
@@ -45,7 +47,7 @@ python dataset/model-training/serve_onnx.py \
 cd edge-infer
 CLASSIFIER_URL=http://127.0.0.1:18080/predict \
 REDIS_ADDR=127.0.0.1:6379 \
-go run ./cmd/edge-infer
+java -Xms64m -Xmx256m -jar target/edge-infer-0.1.0-SNAPSHOT.jar
 ```
 
 ## 配置
@@ -112,5 +114,5 @@ LLM_URL=http://100.85.92.31:18081/v1/chat/completions
 ## 测试
 
 ```bash
-go test ./...
+cd .. && ./mvnw -pl edge-infer -am test
 ```

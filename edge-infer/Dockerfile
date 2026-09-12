@@ -1,13 +1,12 @@
-FROM docker.xuanyuan.run/library/golang:1.22-alpine AS builder
-
-WORKDIR /src
-COPY go.mod go.sum ./
-RUN go mod download
+FROM eclipse-temurin:25-jdk AS build
+WORKDIR /build
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -o /out/edge-infer ./cmd/edge-infer
+RUN --mount=type=cache,id=cotriage-nova-maven,target=/root/.m2,sharing=locked chmod +x mvnw && ./mvnw -B -ntp -pl edge-infer -am -DskipTests package
 
-FROM docker.xuanyuan.run/library/alpine:3.20
-RUN adduser -D -H -u 10001 app
-USER 10001
-COPY --from=builder /out/edge-infer /edge-infer
-ENTRYPOINT ["/edge-infer"]
+FROM eclipse-temurin:25-jre
+WORKDIR /app
+ENV JAVA_TOOL_OPTIONS="-Xms64m -Xmx256m"
+COPY --from=build --chown=10001:10001 /build/edge-infer/target/edge-infer-0.1.0-SNAPSHOT.jar /app/service.jar
+COPY --from=build --chown=10001:10001 /build/edge-infer/config /app/config
+USER 10001:10001
+ENTRYPOINT ["java","-jar","/app/service.jar"]

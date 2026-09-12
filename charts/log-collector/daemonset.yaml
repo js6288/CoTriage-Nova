@@ -22,9 +22,10 @@ spec:
                     operator: DoesNotExist
       containers:
         - name: log-collector
-          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/log-collector:v0.0.1-202605271813
+          image: cotriage-nova/log-collector:java25
           imagePullPolicy: IfNotPresent
           env:
+            - { name: JAVA_TOOL_OPTIONS, value: "-Xms64m -Xmx256m" }
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
@@ -37,6 +38,9 @@ spec:
               value: cotriage.events.raw
             - name: REDIS_STREAM_MAXLEN
               value: "100000"
+          resources:
+            requests: { cpu: 50m, memory: 256Mi }
+            limits: { cpu: 500m, memory: 512Mi }
           volumeMounts:
             - name: cotriage-varlog
               mountPath: /var/log/cotriage

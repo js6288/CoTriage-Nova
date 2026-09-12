@@ -1,3 +1,5 @@
+> CoTriage-Nova: this top-level service now uses Java 25. Build from the repository root with `./mvnw -pl server -am -DskipTests package`. See [migration notes](../migration/README.md) for compatibility boundaries.
+
 # CoTriage Server (MVP)
 
 入口：`cmd/server`

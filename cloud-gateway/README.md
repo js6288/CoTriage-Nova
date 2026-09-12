@@ -1,3 +1,5 @@
+> CoTriage-Nova: this top-level service now uses Java 25. Build from the repository root with `./mvnw -pl cloud-gateway -am -DskipTests package`. See [migration notes](../migration/README.md) for compatibility boundaries.
+
 # cloud-gateway
 
 `cloud-gateway` consumes router cloud requests, builds nearby log context, invokes an
@@ -14,7 +16,7 @@ export MYSQL_DSN='cotriage:cotriage-pass@tcp(localhost:3306)/cotriage?parseTime=
 export REDIS_ADDR=localhost:6379
 export SERVER_BASE_URL=http://localhost:8080
 export DEEPSEEK_API_KEY='...'
-go run ./cmd/cloud-gateway
+java -Xms64m -Xmx256m -jar target/cloud-gateway-0.1.0-SNAPSHOT.jar
 ```
 
 Create and activate a provider through:

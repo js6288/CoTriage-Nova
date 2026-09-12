@@ -15,9 +15,10 @@ spec:
     spec:
       containers:
         - name: router-controller
-          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/router-controller:v0.0.1-202608081730
+          image: cotriage-nova/router-controller:java25
           imagePullPolicy: Always
           env:
+            - { name: JAVA_TOOL_OPTIONS, value: "-Xms64m -Xmx256m" }
             - name: REDIS_ADDR
               value: redis:6379
             - name: MYSQL_PASSWORD
@@ -82,7 +83,7 @@ spec:
           resources:
             requests:
               cpu: 50m
-              memory: 64Mi
+              memory: 256Mi
             limits:
               cpu: 500m
               memory: 512Mi

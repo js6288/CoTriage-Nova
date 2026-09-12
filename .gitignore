@@ -87,3 +87,12 @@ dataset/model-training/runs/
 dataset/model-training/checkpoints/
 dataset/model-training/.cache/
 .runtime/
+
+# Java builds and isolated migration verification
+**/target/
+.migration/
+**/.gradle/
+**/build/
+migration/source-paths.nul
+!migration/fixtures/kubeconfig-smoke.yaml
+!migration/fixtures/smoke-current.log

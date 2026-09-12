@@ -1,0 +1,89 @@
+# Isolated image verification only. It does not access an existing cluster or model provider.
+x-java: &java
+  mem_limit: 512m
+  environment: &env
+    JAVA_TOOL_OPTIONS: "-Xms64m -Xmx256m"
+    MYSQL_DSN: "nova:fixture-only@tcp(mysql:3306)/cotriage?charset=utf8mb4&parseTime=true&loc=UTC"
+    REDIS_ADDR: "redis:6379"
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: fixture-root-only
+      MYSQL_USER: nova
+      MYSQL_PASSWORD: fixture-only
+      MYSQL_DATABASE: cotriage
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pfixture-root-only"]
+      interval: 2s
+      timeout: 2s
+      retries: 60
+  redis:
+    image: redis:7.4-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  fixture:
+    image: python:3.11-slim
+    command: ["python", "/fixture.py"]
+    volumes: ["./fixtures/service-fixture.py:/fixture.py:ro"]
+  server:
+    <<: *java
+    image: cotriage-nova/server:java25
+    environment:
+      <<: *env
+      KUBECONFIG: /fixture/kubeconfig
+      LISTEN_ADDR: ":8080"
+    volumes: ["./fixtures/kubeconfig-smoke.yaml:/fixture/kubeconfig:ro"]
+    ports: ["127.0.0.1::8080"]
+    depends_on:
+      mysql: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      fixture: {condition: service_started}
+  router-controller:
+    <<: *java
+    image: cotriage-nova/router-controller:java25
+    environment:
+      <<: *env
+      CLOUD_HEALTH_URL: http://fixture:18080/health
+    depends_on:
+      mysql: {condition: service_healthy}
+      redis: {condition: service_healthy}
+  cloud-gateway:
+    <<: *java
+    image: cotriage-nova/cloud-gateway:java25
+    environment:
+      <<: *env
+      SERVER_BASE_URL: http://server:8080
+    depends_on:
+      mysql: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      server: {condition: service_started}
+  edge-infer:
+    <<: *java
+    image: cotriage-nova/edge-infer:java25
+    environment:
+      <<: *env
+      CLASSIFIER_URL: http://fixture:18080/predict
+      LLM_URL: http://fixture:18080/chat
+      EDGE_CONFIG_URL: http://server:8080/api/v1/edge-config
+    depends_on:
+      redis: {condition: service_healthy}
+      fixture: {condition: service_started}
+      server: {condition: service_started}
+  log-collector:
+    <<: *java
+    image: cotriage-nova/log-collector:java25
+    environment:
+      <<: *env
+      KUBECONFIG: /fixture/kubeconfig
+      NODE_NAME: fixture-node
+      LOG_PATH: /fixture/current.log
+    volumes:
+      - "./fixtures/kubeconfig-smoke.yaml:/fixture/kubeconfig:ro"
+      - "./fixtures/smoke-current.log:/fixture/current.log:ro"
+    depends_on:
+      redis: {condition: service_healthy}
+      fixture: {condition: service_started}

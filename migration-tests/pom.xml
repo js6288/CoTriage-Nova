@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+ <modelVersion>4.0.0</modelVersion>
+ <parent><groupId>io.cotriage.nova</groupId><artifactId>cotriage-nova</artifactId><version>0.1.0-SNAPSHOT</version></parent>
+ <artifactId>migration-tests</artifactId>
+ <dependencies>
+  <dependency><groupId>io.cotriage.nova</groupId><artifactId>cotriage-common</artifactId></dependency>
+  <dependency><groupId>org.testcontainers</groupId><artifactId>testcontainers</artifactId><scope>test</scope></dependency>
+  <dependency><groupId>org.testcontainers</groupId><artifactId>mysql</artifactId><scope>test</scope></dependency>
+ </dependencies>
+ <build><plugins><plugin>
+  <groupId>org.apache.maven.plugins</groupId><artifactId>maven-failsafe-plugin</artifactId>
+  <configuration><systemPropertyVariables>
+   <maven.multiModuleProjectDirectory>${maven.multiModuleProjectDirectory}</maven.multiModuleProjectDirectory>
+   <cotriage.artifact.version>${project.version}</cotriage.artifact.version>
+  </systemPropertyVariables></configuration>
+ </plugin></plugins></build>
+</project>

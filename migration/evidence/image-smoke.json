@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-09-12T06:23:38.9375162Z",
+  "containers": [
+    {
+      "service": "log-collector",
+      "container": "1040ef6c3c6051ab1f454efbf83f37ed9efea462e86ddaa81674172b5e2a7d30",
+      "image": "sha256:07145a2767a2b9390d0a0830d000445e88a281a1614c378c5563e4114253acba",
+      "status": "running",
+      "memoryLimitBytes": 536870912,
+      "javaToolOptions": "JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m"
+    },
+    {
+      "service": "edge-infer",
+      "container": "e01eef51452a160ce1bc8225d21fd0ab8777837130e390685a179e9cf2d4376d",
+      "image": "sha256:505746c29a4cf9b20d557360f4cd871919cf076b959e7e2777c9bf6656faab4d",
+      "status": "running",
+      "memoryLimitBytes": 536870912,
+      "javaToolOptions": "JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m"
+    },
+    {
+      "service": "router-controller",
+      "container": "48ece1f08cdd76071b6a7e150ff621c5390db29b9c58b8ccf685c0aefaa02b6d",
+      "image": "sha256:561ac70e56d73fa72a36380009ebaf7da3b79caf9ebf1f63957a0cc3bda1ab16",
+      "status": "running",
+      "memoryLimitBytes": 536870912,
+      "javaToolOptions": "JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m"
+    },
+    {
+      "service": "cloud-gateway",
+      "container": "4274e87294e452f386738eb0ca0932dfb2c21f7ed1b46b72766db6c970c949f9",
+      "image": "sha256:6daedbeddc7fac5218f25726c0a1e22a027491281c22a43cfbf6a623ad63e4d5",
+      "status": "running",
+      "memoryLimitBytes": 536870912,
+      "javaToolOptions": "JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m"
+    },
+    {
+      "service": "server",
+      "container": "bbfe75e720887320d41d7f1b24b3818ee1147175db5103b9c6805624cc77eabc",
+      "image": "sha256:8a1af337ca18c79797ef8555139fb9103dd74c5215bc9c6bac861997f511e51b",
+      "status": "running",
+      "memoryLimitBytes": 536870912,
+      "javaToolOptions": "JAVA_TOOL_OPTIONS=-Xms64m -Xmx256m"
+    }
+  ],
+  "stats": [
+    {
+      "BlockIO": "114MB / 0B",
+      "CPUPerc": "0.22%",
+      "Container": "1040ef6c3c6051ab1f454efbf83f37ed9efea462e86ddaa81674172b5e2a7d30",
+      "ID": "1040ef6c3c60",
+      "MemPerc": "34.79%",
+      "MemUsage": "178.1MiB / 512MiB",
+      "Name": "cotriage-nova-imagecheck-log-collector-1",
+      "NetIO": "3.38kB / 1.74kB",
+      "PIDs": "18"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "1.00%",
+      "Container": "e01eef51452a160ce1bc8225d21fd0ab8777837130e390685a179e9cf2d4376d",
+      "ID": "e01eef51452a",
+      "MemPerc": "29.90%",
+      "MemUsage": "153.1MiB / 512MiB",
+      "Name": "cotriage-nova-imagecheck-edge-infer-1",
+      "NetIO": "3.71kB / 2.9kB",
+      "PIDs": "25"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.55%",
+      "Container": "48ece1f08cdd76071b6a7e150ff621c5390db29b9c58b8ccf685c0aefaa02b6d",
+      "ID": "48ece1f08cdd",
+      "MemPerc": "32.05%",
+      "MemUsage": "164.1MiB / 512MiB",
+      "Name": "cotriage-nova-imagecheck-router-controller-1",
+      "NetIO": "43.5kB / 45.5kB",
+      "PIDs": "23"
+    },
+    {
+      "BlockIO": "0B / 0B",
+      "CPUPerc": "0.61%",
+      "Container": "4274e87294e452f386738eb0ca0932dfb2c21f7ed1b46b72766db6c970c949f9",
+      "ID": "4274e87294e4",
+      "MemPerc": "29.41%",
+      "MemUsage": "150.6MiB / 512MiB",
+      "Name": "cotriage-nova-imagecheck-cloud-gateway-1",
+      "NetIO": "5.78kB / 5.14kB",
+      "PIDs": "25"
+    },
+    {
+      "BlockIO": "672kB / 0B",
+      "CPUPerc": "0.21%",
+      "Container": "bbfe75e720887320d41d7f1b24b3818ee1147175db5103b9c6805624cc77eabc",
+      "ID": "bbfe75e72088",
+      "MemPerc": "40.98%",
+      "MemUsage": "209.8MiB / 512MiB",
+      "Name": "cotriage-nova-imagecheck-server-1",
+      "NetIO": "69.9kB / 83.1kB",
+      "PIDs": "30"
+    }
+  ],
+  "api": [
+    {
+      "path": "devices",
+      "status": 200
+    },
+    {
+      "path": "events",
+      "status": 200
+    },
+    {
+      "path": "edge-config",
+      "status": 200
+    },
+    {
+      "path": "router/summary",
+      "status": 200
+    },
+    {
+      "path": "router/state",
+      "status": 200
+    },
+    {
+      "path": "competition-metrics",
+      "status": 200
+    }
+  ]
+}

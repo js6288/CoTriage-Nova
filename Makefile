@@ -1,4 +1,16 @@
-.PHONY: up up-avatar up-no-cloud stop-help
+.PHONY: up up-avatar up-no-cloud stop-help build test verify images
+
+build:
+	./mvnw -B -ntp -DskipTests package
+
+test:
+	./mvnw -B -ntp test
+
+verify:
+	./mvnw -B -ntp verify
+
+images:
+	./script/build-java-images.sh
 
 up:
 	./start-cotriage.sh

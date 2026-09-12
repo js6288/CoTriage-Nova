@@ -1,14 +1,11 @@
-FROM docker.xuanyuan.run/library/golang:1.22 AS builder
-WORKDIR /src
-
-COPY go.mod go.sum ./
-RUN go env -w GOPROXY=https://goproxy.cn,direct && go env -w GOSUMDB=off && go mod download
-
+FROM eclipse-temurin:25-jdk AS build
+WORKDIR /build
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags='-s -w' -o /out/router-controller ./cmd/router-controller
+RUN --mount=type=cache,id=cotriage-nova-maven,target=/root/.m2,sharing=locked chmod +x mvnw && ./mvnw -B -ntp -pl router-controller -am -DskipTests package
 
-FROM docker.xuanyuan.run/library/alpine:3.20
-RUN adduser -D -H -u 10001 app
-USER 10001
-COPY --from=builder /out/router-controller /router-controller
-ENTRYPOINT ["/router-controller"]
+FROM eclipse-temurin:25-jre
+WORKDIR /app
+ENV JAVA_TOOL_OPTIONS="-Xms64m -Xmx256m"
+COPY --from=build --chown=10001:10001 /build/router-controller/target/router-controller-0.1.0-SNAPSHOT.jar /app/service.jar
+USER 10001:10001
+ENTRYPOINT ["java","-jar","/app/service.jar"]

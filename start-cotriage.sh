@@ -193,7 +193,7 @@ done
 
 require_command kubectl
 require_command nc
-require_command go
+require_command java
 require_command seq
 [[ "${STARTUP_TIMEOUT}" =~ ^[1-9][0-9]*$ ]] || die "STARTUP_TIMEOUT must be a positive integer"
 if [[ "${WITH_WEB}" -eq 1 ]]; then require_command npm; fi
@@ -204,9 +204,8 @@ mkdir -p "${LOG_DIR}"
 : >"${LOG_DIR}/startup.log"
 trap cleanup EXIT INT TERM
 
-# A globally exported stale GOROOT can make the selected Go binary use another
-# installation's standard library. Let the selected `go` command choose its own.
-unset GOROOT || true
+log "Building Java 25 services..."
+(cd "${SCRIPT_DIR}" && ./mvnw -B -ntp -DskipTests package)
 
 log "Checking Kubernetes infrastructure in namespace ${NAMESPACE}..."
 kubectl --kubeconfig "${KUBECONFIG_PATH}" -n "${NAMESPACE}" get \
@@ -235,7 +234,7 @@ start_process server "${SCRIPT_DIR}/server" env \
   MYSQL_DSN="${MYSQL_DSN}" REDIS_ADDR="127.0.0.1:${REDIS_LOCAL_PORT}" \
   SERVER_MIGRATION_TIMEOUT="${SERVER_MIGRATION_TIMEOUT:-3m}" \
   SERVER_SEED_TIMEOUT="${SERVER_SEED_TIMEOUT:-3m}" \
-  go run ./cmd/server
+  java -Xms64m -Xmx256m -jar "${SCRIPT_DIR}/server/target/server-0.1.0-SNAPSHOT.jar"
 server_pid="${started_pid}"
 if ! wait_for_port server "${SERVER_LOCAL_PORT}" "${server_pid}"; then
   tail -n 40 "${LOG_DIR}/server.log" >&2 || true
@@ -251,20 +250,20 @@ start_process edge-infer "${SCRIPT_DIR}/edge-infer" env \
   LLM_URL="${EDGE_LLM_URL:-http://100.85.92.31:18081/v1/chat/completions}" \
   LLM_TIMEOUT="${EDGE_LLM_TIMEOUT:-30s}" \
   CONSUMER_NAME="edge-infer-local" \
-  go run ./cmd/edge-infer
+  java -Xms64m -Xmx256m -jar "${SCRIPT_DIR}/edge-infer/target/edge-infer-0.1.0-SNAPSHOT.jar"
 
 start_process router-controller "${SCRIPT_DIR}/router-controller" env \
   REDIS_ADDR="127.0.0.1:${REDIS_LOCAL_PORT}" MYSQL_DSN="${MYSQL_DSN}" \
   CONSUMER_NAME="router-controller-local" AUTO_MIGRATE=1 \
   ROUTER_MIGRATION_TIMEOUT="${ROUTER_MIGRATION_TIMEOUT:-3m}" \
-  go run ./cmd/router-controller
+  java -Xms64m -Xmx256m -jar "${SCRIPT_DIR}/router-controller/target/router-controller-0.1.0-SNAPSHOT.jar"
 
 if [[ "${WITH_CLOUD}" -eq 1 ]]; then
   start_process cloud-gateway "${SCRIPT_DIR}/cloud-gateway" env \
     REDIS_ADDR="127.0.0.1:${REDIS_LOCAL_PORT}" MYSQL_DSN="${MYSQL_DSN}" \
     SERVER_BASE_URL="http://127.0.0.1:${SERVER_LOCAL_PORT}" \
     CLOUD_GATEWAY_CONSUMER="cloud-gateway-local" \
-    go run ./cmd/cloud-gateway
+    java -Xms64m -Xmx256m -jar "${SCRIPT_DIR}/cloud-gateway/target/cloud-gateway-0.1.0-SNAPSHOT.jar"
 fi
 
 if [[ "${WITH_WEB}" -eq 1 ]]; then

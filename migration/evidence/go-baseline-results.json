@@ -1,0 +1,22 @@
+[
+  {
+    "module": "log-collector",
+    "exitCode": 0
+  },
+  {
+    "module": "edge-infer",
+    "exitCode": 0
+  },
+  {
+    "module": "router-controller",
+    "exitCode": 0
+  },
+  {
+    "module": "cloud-gateway",
+    "exitCode": 0
+  },
+  {
+    "module": "server",
+    "exitCode": 0
+  }
+]

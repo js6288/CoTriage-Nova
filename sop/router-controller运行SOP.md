@@ -33,7 +33,7 @@ DLQ_STREAM=cotriage.events.dlq \
 CONSUMER_GROUP=router-g \
 CONSUMER_NAME=router-controller-local \
 AUTO_MIGRATE=1 \
-go run ./cmd/router-controller
+java -Xms64m -Xmx256m -jar target/router-controller-0.1.0-SNAPSHOT.jar
 ```
 
 也可以使用 VSCode `router-controller` debug 配置启动。

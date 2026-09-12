@@ -1,0 +1,6 @@
+=== RUN   TestEdgeKnowledgeStore_SeedBuiltinRulesIdempotent
+--- PASS: TestEdgeKnowledgeStore_SeedBuiltinRulesIdempotent (0.21s)
+=== RUN   TestEdgeProvidersStore_ActivateAndConfig
+--- PASS: TestEdgeProvidersStore_ActivateAndConfig (0.11s)
+PASS
+ok  	github.com/pangjian-pj/cotriage-dev/server/internal/store	0.423s

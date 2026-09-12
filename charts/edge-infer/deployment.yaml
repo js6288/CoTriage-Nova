@@ -9,15 +9,16 @@ spec:
     spec:
       containers:
         - name: edge-infer
-          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/edge-infer:v0.0.1-202608081730
+          image: cotriage-nova/edge-infer:java25
           imagePullPolicy: Always
           env:
+            - { name: JAVA_TOOL_OPTIONS, value: "-Xms64m -Xmx256m" }
             - { name: REDIS_ADDR, value: "redis:6379" }
             - { name: EDGE_CONFIG_URL, value: "http://server:8080/api/v1/edge-config" }
             - { name: CLASSIFIER_URL, value: "http://onnx-classifier:18080/predict" }
             - name: CONSUMER_NAME
               valueFrom: { fieldRef: { fieldPath: metadata.name } }
           resources:
-            requests: { cpu: 50m, memory: 64Mi }
-            limits: { cpu: 500m, memory: 256Mi }
+            requests: { cpu: 50m, memory: 256Mi }
+            limits: { cpu: 500m, memory: 512Mi }
       imagePullSecrets: [{ name: docker-registry-secret }]

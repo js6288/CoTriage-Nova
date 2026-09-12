@@ -1,3 +1,5 @@
+> CoTriage-Nova: this top-level service now uses Java 25. Build from the repository root with `./mvnw -pl log-collector -am -DskipTests package`. See [migration notes](../migration/README.md) for compatibility boundaries.
+
 镜像构建说明：
 登录阿里云仓库
 make login

@@ -45,11 +45,12 @@ spec:
       serviceAccountName: cotriage-server
       containers:
         - name: server
-          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/server:v0.0.1-202608091250
+          image: cotriage-nova/server:java25
           imagePullPolicy: Always
           ports:
             - { name: http, containerPort: 8080 }
           env:
+            - { name: JAVA_TOOL_OPTIONS, value: "-Xms64m -Xmx256m" }
             - { name: REDIS_ADDR, value: "redis:6379" }
             - name: MYSQL_PASSWORD
               valueFrom: { secretKeyRef: { name: mysql-secret, key: MYSQL_PASSWORD } }
@@ -59,7 +60,7 @@ spec:
               valueFrom: { secretKeyRef: { name: cloud-gateway-config-auth, key: token } }
           readinessProbe: { httpGet: { path: /api/v1/dashboard/summary, port: http }, initialDelaySeconds: 8, periodSeconds: 10 }
           resources:
-            requests: { cpu: 50m, memory: 96Mi }
+            requests: { cpu: 50m, memory: 256Mi }
             limits: { cpu: 500m, memory: 512Mi }
       imagePullSecrets: [{ name: docker-registry-secret }]
 ---

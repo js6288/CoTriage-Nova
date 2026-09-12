@@ -1,0 +1,273 @@
+{
+  "classifier": [
+    {
+      "input": {
+        "label": "ALERT",
+        "label_id": 1,
+        "alert_probability": 0.451605,
+        "threshold": 0.25,
+        "model_version": "bgl-distilbert"
+      },
+      "result": {
+        "edge_pred": "ABNORMAL",
+        "severity": 75,
+        "confidence": 0.451605,
+        "evidence": [
+          "classifier_label=ALERT",
+          "alert_probability=0.451605",
+          "threshold=0.250000"
+        ],
+        "advice_code": "CHECK_ALERT_CONTEXT",
+        "advice": "轻量分类模型判断该日志模板疑似异常，建议进入边缘 LLM 或云端进一步诊断。"
+      }
+    },
+    {
+      "input": {
+        "label": "NON_ALERT",
+        "label_id": 0,
+        "alert_probability": 0.1,
+        "threshold": 0.25
+      },
+      "result": {
+        "edge_pred": "NORMAL",
+        "severity": 10,
+        "confidence": 0.9,
+        "evidence": [
+          "classifier_label=NON_ALERT",
+          "alert_probability=0.100000",
+          "threshold=0.250000"
+        ],
+        "advice_code": "NO_ACTION",
+        "advice": "轻量分类模型判断该日志模板为正常。"
+      }
+    },
+    {
+      "input": {
+        "label": "ALERT",
+        "label_id": 0,
+        "alert_probability": 0.99,
+        "threshold": 0.5
+      },
+      "result": {
+        "edge_pred": "ABNORMAL",
+        "severity": 75,
+        "confidence": 0.99,
+        "evidence": [
+          "classifier_label=ALERT",
+          "alert_probability=0.990000",
+          "threshold=0.500000"
+        ],
+        "advice_code": "CHECK_ALERT_CONTEXT",
+        "advice": "轻量分类模型判断该日志模板疑似异常，建议进入边缘 LLM 或云端进一步诊断。"
+      }
+    }
+  ],
+  "llm": [
+    {
+      "content": "```json\n{\"edge_pred\":\"NET_ERROR\",\"severity\":78,\"confidence\":0.72,\"evidence\":[\"connection refused\"],\"advice_code\":\"CHECK_NETWORK\",\"advice\":\"检查服务端口\"}\n```",
+      "error": false,
+      "result": {
+        "edge_pred": "NET_ERROR",
+        "severity": 78,
+        "confidence": 0.72,
+        "evidence": [
+          "connection refused"
+        ],
+        "advice_code": "CHECK_NETWORK",
+        "advice": "检查服务端口"
+      }
+    },
+    {
+      "content": "{\"edge_pred\":\"NET_ERROR\",\"severity\":78,\"confidence\":0.72,\"evidence\":[\"connection refused\"],\"advice_code\":\"CHECK_NETWORK\",\"advice\":\"检查",
+      "error": false,
+      "result": {
+        "edge_pred": "NET_ERROR",
+        "severity": 78,
+        "confidence": 0.72,
+        "evidence": [
+          "connection refused",
+          "llm_json_repaired"
+        ],
+        "advice_code": "CHECK_NETWORK"
+      }
+    },
+    {
+      "content": "{\"edge_pred\":\"ABNORMAL\",\"severity\":75,\"confidence\":0.7}",
+      "error": true
+    },
+    {
+      "content": "{\"edge_pred\":\"SECURITY\",\"severity\":75,\"confidence\":0.7,\"evidence\":[\"1\",\"2\",\"3\",\"4\"]}",
+      "error": false,
+      "result": {
+        "edge_pred": "SECURITY",
+        "severity": 75,
+        "confidence": 0.7,
+        "evidence": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    },
+    {
+      "content": "{\"edge_pred\":\"APP_ERROR\",\"severity\":40,\"confidence\":0.6",
+      "error": false,
+      "result": {
+        "edge_pred": "APP_ERROR",
+        "severity": 40,
+        "confidence": 0.6,
+        "evidence": [
+          "partial_llm_json",
+          "llm_json_repaired"
+        ]
+      }
+    },
+    {
+      "content": "no json output",
+      "error": true
+    },
+    {
+      "content": "{\"edge_pred\":\"NET_ERROR\",\"severity\":78.5,\"confidence\":0.72}",
+      "error": false,
+      "result": {
+        "edge_pred": "NET_ERROR",
+        "severity": 78,
+        "confidence": 0.72,
+        "evidence": [
+          "partial_llm_json",
+          "llm_json_repaired"
+        ]
+      }
+    }
+  ],
+  "normalization": [
+    {
+      "max_bytes": 8192,
+      "raw": "2026-06-22T03:00:00Z [pid=123] connect to 10.0.0.2:3306 at /var/lib/mysql/data",
+      "template_id": "ff4a922b913a78be",
+      "template_text": "connect to \u003cIP\u003e:\u003cNUM\u003e at \u003cPATH\u003e"
+    },
+    {
+      "max_bytes": 8192,
+      "raw": " UUID 550e8400-e29b-41d4-a716-446655440000 HEX 0xAb12 value 001 path /one/two.log ",
+      "template_id": "e3eb6e197ac41fa0",
+      "template_text": "UUID \u003cUUID\u003e HEX \u003cHEX\u003e value \u003cNUM\u003e path \u003cPATH\u003e"
+    },
+    {
+      "max_bytes": 8192,
+      "raw": " \t中文 😀 故障 123next field\u001cend ",
+      "template_id": "6b4b5d323077c49d",
+      "template_text": "中文 😀 故障 \u003cNUM\u003e next field\u001cend"
+    },
+    {
+      "max_bytes": 1,
+      "raw": "中文😀suffix",
+      "template_id": "5e1effe9b7bab73d",
+      "template_text": "\ufffd"
+    },
+    {
+      "max_bytes": 2,
+      "raw": "中文😀suffix",
+      "template_id": "f3eb8d38197cb675",
+      "template_text": "\ufffd\ufffd"
+    },
+    {
+      "max_bytes": 4,
+      "raw": "中文😀suffix",
+      "template_id": "9a9b5b927ab9d663",
+      "template_text": "中\ufffd"
+    },
+    {
+      "max_bytes": 8,
+      "raw": "中文😀suffix",
+      "template_id": "a24eb346600baa39",
+      "template_text": "中文\ufffd\ufffd"
+    },
+    {
+      "max_bytes": 8192,
+      "raw": "a\nb\r\nc\td",
+      "template_id": "f82ce1b653e30b1c",
+      "template_text": "a b c d"
+    },
+    {
+      "max_bytes": 8192,
+      "raw": "[thread=42] [pid=4] write failed /var/lib/data",
+      "template_id": "232d6cfc88cadb7f",
+      "template_text": "write failed \u003cPATH\u003e"
+    },
+    {
+      "max_bytes": 8192,
+      "raw": "2026/06/22 03:00:00Z count=8 10.0.0.300",
+      "template_id": "73c561c559c5d047",
+      "template_text": "count=\u003cNUM\u003e \u003cIP\u003e"
+    }
+  ],
+  "rules": [
+    {
+      "matched": true,
+      "result": {
+        "edge_pred": "INFRA_ERROR",
+        "severity": 95,
+        "confidence": 0.99,
+        "evidence": [
+          "out of memory"
+        ],
+        "advice_code": "CHECK_MEMORY",
+        "advice": "检查内存使用、限制配置和进程状态"
+      },
+      "text": "out of memory"
+    },
+    {
+      "matched": true,
+      "result": {
+        "edge_pred": "DISK_ERROR",
+        "severity": 92,
+        "confidence": 0.99,
+        "evidence": [
+          "no space left on device"
+        ],
+        "advice_code": "CHECK_DISK_SPACE",
+        "advice": "检查磁盘空间、inode和日志清理策略"
+      },
+      "text": "NO SPACE LEFT ON DEVICE"
+    },
+    {
+      "matched": true,
+      "result": {
+        "edge_pred": "NET_ERROR",
+        "severity": 78,
+        "confidence": 0.95,
+        "evidence": [
+          "connection failure"
+        ],
+        "advice_code": "CHECK_NETWORK_AND_SERVICE",
+        "advice": "检查目标服务状态、端口监听和网络策略"
+      },
+      "text": "connection refused"
+    },
+    {
+      "matched": true,
+      "result": {
+        "edge_pred": "SECURITY",
+        "severity": 75,
+        "confidence": 0.92,
+        "evidence": [
+          "authentication failure"
+        ],
+        "advice_code": "CHECK_AUTH",
+        "advice": "检查访问凭据、账号权限和异常登录来源"
+      },
+      "text": "authentication failed"
+    },
+    {
+      "matched": false,
+      "result": {
+        "edge_pred": "",
+        "severity": 0,
+        "confidence": 0
+      },
+      "text": "ordinary service log"
+    }
+  ],
+  "source": "CoTriage-dev edge-infer Go 1.22.12"
+}

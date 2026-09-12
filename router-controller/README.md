@@ -1,3 +1,5 @@
+> CoTriage-Nova: this top-level service now uses Java 25. Build from the repository root with `./mvnw -pl router-controller -am -DskipTests package`. See [migration notes](../migration/README.md) for compatibility boundaries.
+
 # router-controller
 
 `router-controller` consumes `cotriage.events.inferred`, applies the RAISE routing algorithm, writes lightweight display decisions to MySQL, and publishes routing decisions to downstream streams.
@@ -29,7 +31,7 @@ Then run router-controller:
 cd router-controller
 REDIS_ADDR=127.0.0.1:6379 \
 MYSQL_DSN='cotriage:cotriage-pass@tcp(127.0.0.1:3306)/cotriage?charset=utf8mb4&parseTime=true&loc=UTC' \
-go run ./cmd/router-controller
+java -Xms64m -Xmx256m -jar target/router-controller-0.1.0-SNAPSHOT.jar
 ```
 
 Inject a minimal inferred event:

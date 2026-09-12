@@ -1,0 +1,3 @@
+package state
+import("testing";"fmt";"time";"github.com/pangjian-pj/cotriage-dev/router-controller/internal/event";"github.com/pangjian-pj/cotriage-dev/router-controller/internal/raise")
+func TestNovaSnapshot(t *testing.T){m:=NewManager(10*time.Minute,7,.1);now:=time.Date(2026,6,30,12,0,0,123456789,time.UTC);in:=event.InferredEvent{EventID:"evt-1",TemplateID:"tpl-1",Source:"host-1",EdgePred:"NET_ERROR",Severity:80};f:=raise.Features{CalibratedUncertainty:.7,Novelty:.8,HistoricalDisagreement:.2,FleetImpact:.3,PathRisk:.4};m.ApplyFeedback(in,true,1,f);m.Observe(in,raise.ActionCloud,now);b,e:=m.SnapshotJSON();if e!=nil{t.Fatal(e)};fmt.Println("NOVA_SNAPSHOT="+b)}

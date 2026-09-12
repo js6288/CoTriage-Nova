@@ -1,16 +1,1 @@
-BINARY=router-controller
-IMAGE?=router-controller:dev
-
-.PHONY: test run build docker-build
-
-test:
-	go test ./...
-
-run:
-	go run ./cmd/router-controller
-
-build:
-	go build -o bin/$(BINARY) ./cmd/router-controller
-
-docker-build:
-	docker build -t $(IMAGE) .
+MODULE := router-controller IMAGE_PREFIX ?= cotriage-nova IMAGE_TAG ?= java25  .PHONY: build test image run build: 	cd .. && ./mvnw -B -ntp -pl $(MODULE) -am -DskipTests package test: 	cd .. && ./mvnw -B -ntp -pl $(MODULE) -am test image: 	cd .. && docker build -f $(MODULE)/Dockerfile -t $(IMAGE_PREFIX)/$(MODULE):$(IMAGE_TAG) . run: build 	java -Xms64m -Xmx256m -jar target/$(MODULE)-0.1.0-SNAPSHOT.jar

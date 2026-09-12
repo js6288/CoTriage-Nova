@@ -1,5 +1,1 @@
-.PHONY: test build
-test:
-	go test ./...
-build:
-	go build ./cmd/cloud-gateway
+MODULE := cloud-gateway IMAGE_PREFIX ?= cotriage-nova IMAGE_TAG ?= java25  .PHONY: build test image run build: 	cd .. && ./mvnw -B -ntp -pl $(MODULE) -am -DskipTests package test: 	cd .. && ./mvnw -B -ntp -pl $(MODULE) -am test image: 	cd .. && docker build -f $(MODULE)/Dockerfile -t $(IMAGE_PREFIX)/$(MODULE):$(IMAGE_TAG) . run: build 	java -Xms64m -Xmx256m -jar target/$(MODULE)-0.1.0-SNAPSHOT.jar

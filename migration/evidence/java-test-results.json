@@ -1,0 +1,146 @@
+[
+  {
+    "module": "cotriage-common",
+    "suite": "io.cotriage.nova.common.CompatibilityTest",
+    "tests": 3,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "log-collector",
+    "suite": "io.cotriage.nova.collector.TailPublisherTest",
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "edge-infer",
+    "suite": "io.cotriage.nova.edgeinfer.EngineContractTest",
+    "tests": 9,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "edge-infer",
+    "suite": "io.cotriage.nova.edgeinfer.GoldenParityTest",
+    "tests": 29,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "edge-infer",
+    "suite": "io.cotriage.nova.edgeinfer.HttpContractTest",
+    "tests": 5,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "edge-infer",
+    "suite": "io.cotriage.nova.edgeinfer.RedisIntegrationTest",
+    "tests": 2,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "edge-infer",
+    "suite": "io.cotriage.nova.edgeinfer.WorkerContractTest",
+    "tests": 9,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "router-controller",
+    "suite": "io.cotriage.nova.router.RaiseEngineTest",
+    "tests": 5,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "router-controller",
+    "suite": "io.cotriage.nova.router.RouterStateTest",
+    "tests": 7,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "router-controller",
+    "suite": "io.cotriage.nova.router.RoutingWorkersTest",
+    "tests": 6,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "cloud-gateway",
+    "suite": "io.cotriage.nova.gateway.DiagnosisTest",
+    "tests": 7,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "cloud-gateway",
+    "suite": "io.cotriage.nova.gateway.GatewayWorkerTest",
+    "tests": 6,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "cloud-gateway",
+    "suite": "io.cotriage.nova.gateway.ProviderHttpTest",
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "server",
+    "suite": "io.cotriage.nova.server.AnalyticsTest",
+    "tests": 4,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "server",
+    "suite": "io.cotriage.nova.server.DeviceServiceTest",
+    "tests": 2,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "server",
+    "suite": "io.cotriage.nova.server.ServerContractTest",
+    "tests": 16,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "migration-tests",
+    "suite": "io.cotriage.nova.verification.EndToEndIT",
+    "tests": 1,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  {
+    "module": "migration-tests",
+    "suite": "io.cotriage.nova.verification.SchemaCompatibilityIT",
+    "tests": 1,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  }
+]
