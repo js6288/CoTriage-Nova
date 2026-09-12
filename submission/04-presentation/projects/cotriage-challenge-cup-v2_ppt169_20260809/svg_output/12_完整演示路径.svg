@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="36" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="68" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">一次完整演示沿“接入—识别—路由—深诊—回写”展开</text>
+    <text x="72" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">现场操作始终围绕同一事件主线，避免在菜单之间跳跃式展示</text>
+    <rect x="1054" y="82" width="178" height="30" rx="15" fill="#F59E0B"/>
+    <text x="1143" y="103" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">现场演示 / 视频切入</text>
+  </g>
+  <g id="filmstrip">
+    <rect x="48" y="134" width="1184" height="294" rx="18" fill="#163A5F"/>
+    <circle cx="76" cy="151" r="6" fill="#F6F8FB"/><circle cx="108" cy="151" r="6" fill="#F6F8FB"/><circle cx="140" cy="151" r="6" fill="#F6F8FB"/><circle cx="172" cy="151" r="6" fill="#F6F8FB"/>
+    <circle cx="1108" cy="151" r="6" fill="#F6F8FB"/><circle cx="1140" cy="151" r="6" fill="#F6F8FB"/><circle cx="1172" cy="151" r="6" fill="#F6F8FB"/><circle cx="1204" cy="151" r="6" fill="#F6F8FB"/>
+    <rect x="68" y="174" width="266" height="222" rx="12" fill="#FFFFFF"/>
+    <text x="84" y="199" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#163A5F">01  统一驾驶舱</text>
+    <image x="80" y="210" width="242" height="151" xlink:href="../images/s-01-realtime-dashboard.png" preserveAspectRatio="xMidYMid meet"/>
+    <text x="201" y="383" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">确认节点与实时事件进入</text>
+
+    <rect x="360" y="174" width="266" height="222" rx="12" fill="#FFFFFF"/>
+    <text x="376" y="199" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#163A5F">02  边缘事件流</text>
+    <image x="372" y="210" width="242" height="151" xlink:href="../images/s-02d-realtime-event-stream-cache-model.png" preserveAspectRatio="xMidYMid meet"/>
+    <text x="493" y="383" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">观察 CACHE / MODEL 路径</text>
+
+    <rect x="652" y="174" width="266" height="222" rx="12" fill="#FFFFFF"/>
+    <text x="668" y="199" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#163A5F">03  RAISE 路由</text>
+    <image x="664" y="210" width="242" height="151" xlink:href="../images/s-04a-raise-routing-status-overview.png" preserveAspectRatio="xMidYMid meet"/>
+    <text x="785" y="383" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">查看门槛、预算与 Outbox</text>
+
+    <rect x="944" y="174" width="266" height="222" rx="12" fill="#FFFFFF"/>
+    <text x="960" y="199" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#163A5F">04  云端诊断详情</text>
+    <image x="956" y="210" width="242" height="151" xlink:href="../images/s-05a-cloud-root-cause-diagnosis.png" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1077" y="383" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">读取根因、建议与解释</text>
+  </g>
+  <g id="demo-pipeline">
+    <text x="48" y="466" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">演示主线</text>
+    <line x1="132" y1="530" x2="1148" y2="530" stroke="#CBD7E3" stroke-width="5"/>
+    <circle cx="156" cy="530" r="42" fill="#163A5F"/>
+    <use data-icon="chunk-filled/factory" x="136" y="510" width="40" height="40" fill="#FFFFFF"/>
+    <text x="156" y="594" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">接入</text>
+    <text x="156" y="620" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">多节点入流</text>
+    <polygon points="316,520 336,530 316,540" fill="#16A6B6"/>
+    <circle cx="382" cy="530" r="42" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/layers" x="362" y="510" width="40" height="40" fill="#FFFFFF"/>
+    <text x="382" y="594" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">识别</text>
+    <text x="382" y="620" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">分层推理</text>
+    <polygon points="542,520 562,530 542,540" fill="#16A6B6"/>
+    <circle cx="608" cy="530" r="46" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/route" x="586" y="508" width="44" height="44" fill="#FFFFFF"/>
+    <text x="608" y="598" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#F59E0B">路由</text>
+    <text x="608" y="624" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">LOCAL / CLOUD / DEFER</text>
+    <polygon points="768,520 788,530 768,540" fill="#16A6B6"/>
+    <circle cx="834" cy="530" r="42" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/cloud" x="814" y="510" width="40" height="40" fill="#FFFFFF"/>
+    <text x="834" y="594" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">深诊</text>
+    <text x="834" y="620" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">上下文聚合</text>
+    <polygon points="994,520 1014,530 994,540" fill="#16A6B6"/>
+    <circle cx="1060" cy="530" r="42" fill="#163A5F"/>
+    <use data-icon="chunk-filled/link" x="1040" y="510" width="40" height="40" fill="#FFFFFF"/>
+    <text x="1060" y="594" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">回写</text>
+    <text x="1060" y="620" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">结果与反馈</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">系统演示路径</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">12</text>
+  </g>
+</svg>

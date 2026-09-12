@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="36" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="68" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">功能一：多节点日志就近采集并统一事件化</text>
+    <text x="72" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">异构来源先在现场规整为可追踪事件，再进入边缘实时处理主链</text>
+    <text x="1232" y="64" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">04  INGEST</text>
+  </g>
+  <g id="flow-band">
+    <rect x="96" y="124" width="220" height="58" rx="14" fill="#163A5F"/>
+    <use data-icon="chunk-filled/factory" x="116" y="137" width="32" height="32" fill="#FFFFFF"/>
+    <text x="164" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">多节点就近采集</text>
+    <line x1="316" y1="153" x2="350" y2="153" stroke="#16A6B6" stroke-width="4"/>
+    <polygon points="350,146 364,153 350,160" fill="#16A6B6"/>
+    <rect x="364" y="124" width="220" height="58" rx="14" fill="#FFFFFF" stroke="#16A6B6" stroke-width="2"/>
+    <use data-icon="chunk-filled/sliders" x="384" y="137" width="32" height="32" fill="#16A6B6"/>
+    <text x="432" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">字段规整与脱敏</text>
+    <line x1="584" y1="153" x2="618" y2="153" stroke="#16A6B6" stroke-width="4"/>
+    <polygon points="618,146 632,153 618,160" fill="#16A6B6"/>
+    <rect x="632" y="124" width="220" height="58" rx="14" fill="#FFFFFF" stroke="#16A6B6" stroke-width="2"/>
+    <use data-icon="chunk-filled/database" x="652" y="137" width="32" height="32" fill="#16A6B6"/>
+    <text x="700" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">Redis Streams 入流</text>
+    <line x1="852" y1="153" x2="886" y2="153" stroke="#16A6B6" stroke-width="4"/>
+    <polygon points="886,146 900,153 886,160" fill="#16A6B6"/>
+    <rect x="900" y="124" width="284" height="58" rx="14" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/link" x="920" y="137" width="32" height="32" fill="#FFFFFF"/>
+    <text x="968" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">统一事件标识与追踪</text>
+  </g>
+  <g id="device-panel">
+    <rect x="48" y="204" width="430" height="342" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="70" y="234" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">多设备接入与状态管理</text>
+    <image x="60" y="248" width="406" height="254" xlink:href="../images/s-02-device-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="70" y="508" width="142" height="26" rx="13" fill="#E9EEF3"/>
+    <text x="141" y="526" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" font-weight="700" fill="#60758A">节点状态统一管理</text>
+  </g>
+  <g id="event-panel">
+    <rect x="500" y="204" width="732" height="342" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="522" y="234" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">CACHE / MODEL 路径实时事件流</text>
+    <image x="512" y="248" width="708" height="294" xlink:href="../images/s-02d-realtime-event-stream-cache-model.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="event-schema">
+    <rect x="48" y="566" width="1184" height="92" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="72" y="594" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">统一事件保留完整上下文</text>
+    <rect x="72" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="142" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">event_id</text>
+    <rect x="228" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="298" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">source</text>
+    <rect x="384" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="454" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">timestamp</text>
+    <rect x="540" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="610" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">severity</text>
+    <rect x="696" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="766" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">payload</text>
+    <rect x="852" y="610" width="140" height="30" rx="15" fill="#E9EEF3"/><text x="922" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">trace</text>
+    <rect x="1008" y="610" width="194" height="30" rx="15" fill="#16A6B6"/><text x="1105" y="631" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">推理与路由元数据</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">多节点采集与统一事件化</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">06</text>
+  </g>
+</svg>

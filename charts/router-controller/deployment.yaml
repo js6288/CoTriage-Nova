@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: router-controller
+  namespace: cotriage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: router-controller
+  template:
+    metadata:
+      labels:
+        app: router-controller
+    spec:
+      containers:
+        - name: router-controller
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/router-controller:v0.0.1-202608081730
+          imagePullPolicy: Always
+          env:
+            - name: REDIS_ADDR
+              value: redis:6379
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_DSN
+              value: cotriage:$(MYSQL_PASSWORD)@tcp(mysql:3306)/cotriage?charset=utf8mb4&parseTime=true&loc=UTC
+            - name: INFERRED_STREAM
+              value: cotriage.events.inferred
+            - name: ROUTED_STREAM
+              value: cotriage.events.routed
+            - name: CLOUD_REQ_STREAM
+              value: cotriage.events.cloud.req
+            - name: DLQ_STREAM
+              value: cotriage.events.dlq
+            - name: CONSUMER_GROUP
+              value: router-g
+            - name: CONSUMER_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: AUTO_MIGRATE
+              value: "1"
+            - name: RAISE_THRESHOLD_BASE
+              value: "0.55"
+            - name: RAISE_FAIL_RATE_LIMIT
+              value: "0.20"
+            - name: QUEUE_PRESSURE_MAX
+              value: "1000"
+            - name: CLOUD_BUDGET_MINUTE
+              value: "60"
+            - name: CLOUD_BUDGET_HOUR
+              value: "1000"
+            - name: CLOUD_BUDGET_DAY
+              value: "10000"
+            - name: CLOUD_RATE_LIMIT
+              value: "60"
+            - name: OUTBOX_REPLAYER_ENABLED
+              value: "1"
+            - name: OUTBOX_REPLAYER_INTERVAL
+              value: 2s
+            - name: OUTBOX_REPLAYER_BATCH
+              value: "20"
+            - name: OUTBOX_LOCK_TTL
+              value: 30s
+            - name: OUTBOX_RETRY_BASE_DELAY
+              value: 5s
+            - name: OUTBOX_MAX_ATTEMPTS
+              value: "5"
+            - name: FEEDBACK_PROCESSOR_ENABLED
+              value: "1"
+            - name: FEEDBACK_PROCESSOR_INTERVAL
+              value: 5s
+            - name: FEEDBACK_PROCESSOR_BATCH
+              value: "20"
+            - name: STATE_WINDOW
+              value: 10m
+            - name: GAIN_UCB_ALPHA
+              value: "0.1"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      imagePullSecrets:
+        - name: docker-registry-secret

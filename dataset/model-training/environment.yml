@@ -1,0 +1,17 @@
+name: cotriage-model-training
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.11
+  - pip
+  - numpy>=1.26
+  - scikit-learn>=1.4
+  - pytorch>=2.3
+  - pip:
+      - transformers>=4.42
+      - safetensors>=0.4
+      - onnx>=1.16
+      - onnxruntime>=1.18
+      - onnxscript>=0.1
+      - tqdm>=4.66

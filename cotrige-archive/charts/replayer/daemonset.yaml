@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cotriage-replayer
+  namespace: cotriage
+spec:
+  selector:
+    matchLabels:
+      app: cotriage-replayer
+  template:
+    metadata:
+      labels:
+        app: cotriage-replayer
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
+      containers:
+        - name: replayer
+          image: docker.xuanyuan.run/library/alpine:latest
+          securityContext:
+            runAsUser: 0
+          env:
+            - name: LINES_PER_SEC
+              value: "50"           # 接近真实：可调
+            - name: SRC_FILE
+              value: /var/log/cotriage/replay_src/source.log
+            - name: OUT_FILE
+              value: /var/log/cotriage/input/current.log
+            - name: LOOP
+              value: "true"
+            - name: TRUNCATE_EVERY_DAYS
+              value: "1"
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -eu
+              mkdir -p /var/log/cotriage/input
+              : > "$OUT_FILE"
+              echo "[replayer] start: $(hostname) SRC=$SRC_FILE OUT=$OUT_FILE LINES_PER_SEC=$LINES_PER_SEC"
+
+              # 每 N 天清空一次 current.log（默认 3 天）
+              trunc_days="${TRUNCATE_EVERY_DAYS:-3}"
+              if ! echo "$trunc_days" | grep -Eq '^[0-9]+$'; then
+                echo "[replayer] invalid TRUNCATE_EVERY_DAYS=$trunc_days, fallback to 3" >&2
+                trunc_days=3
+              fi
+              trunc_secs="$((trunc_days*24*60*60))"
+              next_trunc_ts="$(( $(date +%s) + trunc_secs ))"
+              maybe_truncate() {
+                now_ts="$(date +%s)"
+                if [ "$now_ts" -ge "$next_trunc_ts" ]; then
+                  : > "$OUT_FILE"
+                  next_trunc_ts="$(( now_ts + trunc_secs ))"
+                  echo "[replayer] truncated $OUT_FILE; next_trunc=$(date -u -d "@$next_trunc_ts" -Iseconds 2>/dev/null || echo "@$next_trunc_ts")"
+                fi
+              }
+
+              sleep_s="$(awk "BEGIN {print 1.0/$LINES_PER_SEC}")"
+
+              while true; do
+                if [ ! -f "$SRC_FILE" ]; then
+                  echo "[replayer] missing source file: $SRC_FILE" >&2
+                  sleep 2
+                  continue
+                fi
+
+                while IFS= read -r line || [ -n "$line" ]; do
+                  maybe_truncate
+                  printf '%s %s\n' "$(date -Iseconds)" "$line" >> "$OUT_FILE"
+                  sleep "$sleep_s"
+                done < "$SRC_FILE"
+
+                if [ "$LOOP" = "true" ]; then
+                  echo "[replayer] reached EOF, looping..."
+                else
+                  break
+                fi
+              done
+          volumeMounts:
+            - name: cotriage-varlog
+              mountPath: /var/log/cotriage
+      volumes:
+        - name: cotriage-varlog
+          hostPath:
+            path: /var/log/cotriage
+            type: DirectoryOrCreate
+      imagePullSecrets:
+            - name: docker-registry-secret

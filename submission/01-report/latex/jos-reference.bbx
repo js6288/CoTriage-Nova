@@ -1,0 +1,121 @@
+\ProvidesFile{jos-reference.bbx}[2026/08/22 Journal of Software bibliography style]
+\RequireBibliographyStyle{numeric}
+
+% 《软件学报》英文参考文献采用“姓 + 名字首字母”，首字母不加点。
+\renewrobustcmd*{\bibinitperiod}{}
+\renewrobustcmd*{\bibinitdelim}{}
+\DeclareDelimFormat{multinamedelim}{\addcomma\space}
+\DeclareDelimAlias{finalnamedelim}{multinamedelim}
+\DeclareDelimFormat{andothersdelim}{\addcomma\space}
+\DeclareNameFormat{josname}{%
+  \nameparts{#1}%
+  \usebibmacro{name:family}
+    {\namepartfamily}
+    {\namepartgiven}
+    {\namepartprefix}
+    {\namepartsuffix}%
+  \ifblank{\namepartgiveni}{}{\addspace\namepartgiveni}%
+  \usebibmacro{name:andothers}}
+\DeclareNameAlias{default}{josname}
+\DeclareNameAlias{sortname}{josname}
+\DeclareNameAlias{author}{josname}
+\DeclareNameAlias{editor}{josname}
+
+\DeclareFieldFormat{title}{#1}
+\DeclareFieldFormat[article,inproceedings,online,misc]{title}{#1}
+\DeclareFieldFormat{journaltitle}{#1}
+\DeclareFieldFormat{booktitle}{#1}
+\DeclareFieldFormat{pages}{#1}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{urldate}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{doi}{\mkbibbrackets{doi\addcolon\space\href{https://doi.org/#1}{#1}}}
+
+\renewcommand*{\newunitpunct}{\addperiod\space}
+\renewcommand*{\finentrypunct}{\addperiod}
+\renewbibmacro*{in:}{}
+
+\newbibmacro*{jos:author}{%
+  \ifnameundef{author}
+    {\ifnameundef{editor}{}{\printnames{editor}}}
+    {\printnames{author}}}
+
+\newbibmacro*{jos:doi-url}{%
+  \iffieldundef{doi}
+    {\iffieldundef{url}{}{\printfield{url}}}
+    {\printfield{doi}}}
+
+\newbibmacro*{jos:urldate}{%
+  \iffieldundef{urlyear}
+    {}
+    {\printtext{\mkbibbrackets{%
+       \printfield{urlyear}%
+       \iffieldundef{urlmonth}{}{\textnormal{-}\printfield{urlmonth}}%
+       \iffieldundef{urlday}{}{\textnormal{-}\printfield{urlday}}}}}}
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{jos:author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \setunit{\addperiod\space}%
+  \printfield{journaltitle}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \iffieldundef{volume}{}{\setunit{\addcomma\space}\printfield{volume}}%
+  \iffieldundef{number}{}{\printtext{\mkbibparens{\printfield{number}}}}%
+  \iffieldundef{pages}{}{\setunit{\addcolon\space}\printfield{pages}}%
+  \setunit{\addperiod\space}%
+  \usebibmacro{jos:doi-url}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{jos:author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \setunit{\addperiod\space}%
+  \printtext{In\addcolon\space Proc. of the\space}%
+  \printfield{booktitle}%
+  \iflistundef{location}
+    {\iflistundef{publisher}{}{\setunit{\addperiod\space}\printlist{publisher}}}
+    {\setunit{\addperiod\space}\printlist{location}%
+     \iflistundef{publisher}{}{\setunit{\addcolon\space}\printlist{publisher}}}%
+  \setunit{\addcomma\space}%
+  \printfield{year}%
+  \iffieldundef{pages}{}{\setunit{\addperiod\space}\printfield{pages}}%
+  \setunit{\addperiod\space}%
+  \usebibmacro{jos:doi-url}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyAlias{conference}{inproceedings}
+
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{jos:author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \setunit{\addperiod\space}%
+  \iffieldundef{year}{}{\printfield{year}\setunit{\addspace}}%
+  \usebibmacro{jos:urldate}%
+  \setunit{\addperiod\space}%
+  \printfield{url}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{misc}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{jos:author}%
+  \setunit{\addperiod\space}%
+  \printfield{title}%
+  \iffieldundef{howpublished}{}{\setunit{\addperiod\space}\printfield{howpublished}}%
+  \setunit{\addperiod\space}%
+  \printfield{year}%
+  \usebibmacro{finentry}}
+
+% 编号悬挂、条目紧凑，与《软件学报》正文文末列表的视觉密度一致。
+\setlength{\biblabelsep}{0.6em}
+\setlength{\bibitemsep}{0.35\baselineskip}
+\setlength{\bibparsep}{0pt}

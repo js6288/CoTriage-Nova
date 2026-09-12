@@ -1,0 +1,15 @@
+No,Filename,Width,Height,AspectRatio,PixelAspectRatio,RatioSource,UsageCount,DisplayRatioVariants,AssetKind,SvgRenderable,PptxNativeSupported,SizeKB,Category,ImageArea_SxS,TextArea_SxS
+1,cotriage-system-architecture.png,3840,2160,1.78,1.78,pixel,1,,bitmap,True,True,732.6,Wide landscape,812x457,328x600
+2,s-00-application-homepage.png,2940,1654,1.78,1.78,pixel,1,,bitmap,True,True,4075.1,Wide landscape,812x457,328x600
+3,s-01-realtime-dashboard.png,2940,1832,1.60,1.60,pixel,1,,bitmap,True,True,855.0,Wide landscape,812x506,328x600
+4,s-02-device-management.png,2940,1836,1.60,1.60,pixel,1,,bitmap,True,True,154.4,Wide landscape,812x507,328x600
+5,s-02c-inference-trend-and-distribution.png,2936,1662,1.77,1.77,pixel,1,,bitmap,True,True,666.9,Wide landscape,812x460,328x600
+6,s-02d-realtime-event-stream-cache-model.png,2892,1200,2.41,2.41,pixel,1,,bitmap,True,True,378.6,Ultra-wide,812x337,328x600
+7,s-03-anomaly-trend-analysis-redacted.png,1906,825,2.31,2.31,pixel,1,,bitmap,True,True,1231.2,Ultra-wide,812x351,328x600
+8,s-03b-anomaly-diagnosis-center-overview.png,2880,1516,1.90,1.90,pixel,1,,bitmap,True,True,586.0,Wide landscape,812x427,328x600
+9,s-04a-raise-routing-status-overview.png,2902,1382,2.10,2.10,pixel,1,,bitmap,True,True,266.4,Ultra-wide,812x387,328x600
+10,s-05a-cloud-root-cause-diagnosis.png,2852,760,3.75,3.75,pixel,1,,bitmap,True,True,400.4,Ultra-wide,1160x309,1160x271
+11,s-08a-rule-management.png,2940,1836,1.60,1.60,pixel,1,,bitmap,True,True,248.7,Wide landscape,812x507,328x600
+12,s-09a-minilm-model-management.png,2940,1836,1.60,1.60,pixel,1,,bitmap,True,True,150.6,Wide landscape,812x507,328x600
+13,s-09c-cloud-provider-management.png,2940,1834,1.60,1.60,pixel,1,,bitmap,True,True,186.4,Wide landscape,812x507,328x600
+14,s-11-competition-metrics-dashboard.png,2936,1334,2.20,2.20,pixel,1,,bitmap,True,True,1020.8,Ultra-wide,812x369,328x600

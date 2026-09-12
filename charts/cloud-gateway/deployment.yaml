@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: cloud-gateway, namespace: cotriage }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: cloud-gateway } }
+  template:
+    metadata: { labels: { app: cloud-gateway } }
+    spec:
+      containers:
+        - name: cloud-gateway
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/cloud-gateway:v0.0.1-202608081730
+          imagePullPolicy: Always
+          env:
+            - { name: REDIS_ADDR, value: "redis:6379" }
+            - { name: SERVER_BASE_URL, value: "http://server:8080" }
+            - name: CLOUD_GATEWAY_CONFIG_TOKEN
+              valueFrom: { secretKeyRef: { name: cloud-gateway-config-auth, key: token } }
+            - name: MYSQL_PASSWORD
+              valueFrom: { secretKeyRef: { name: mysql-secret, key: MYSQL_PASSWORD } }
+            - { name: MYSQL_DSN, value: "cotriage:$(MYSQL_PASSWORD)@tcp(mysql:3306)/cotriage?charset=utf8mb4&parseTime=true&loc=UTC" }
+            - name: CLOUD_GATEWAY_CONSUMER
+              valueFrom: { fieldRef: { fieldPath: metadata.name } }
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { cpu: 500m, memory: 256Mi }
+      imagePullSecrets: [{ name: docker-registry-secret }]

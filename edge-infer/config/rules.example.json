@@ -1,0 +1,15 @@
+[
+  {
+    "id": "mysql-connection-refused",
+    "pattern": "connection refused.*(?:3306|mysql)",
+    "edge_pred": "NET_ERROR",
+    "severity": 80,
+    "confidence": 0.96,
+    "evidence": ["connection refused", "mysql"],
+    "advice_code": "CHECK_MYSQL_CONNECTIVITY",
+    "advice": "检查MySQL服务、端口转发和网络策略",
+    "priority": 100,
+    "enabled": true
+  }
+]
+

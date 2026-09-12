@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+app/__init__.py
+app/config.py
+app/main.py
+app/pipeline.py
+app/session.py
+app/avatar/__init__.py
+app/avatar/turn.py
+backend_mode_backend.egg-info/PKG-INFO
+backend_mode_backend.egg-info/SOURCES.txt
+backend_mode_backend.egg-info/dependency_links.txt
+backend_mode_backend.egg-info/requires.txt
+backend_mode_backend.egg-info/top_level.txt

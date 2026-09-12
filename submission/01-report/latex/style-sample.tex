@@ -1,0 +1,61 @@
+% !TEX program = xelatex
+\documentclass[UTF8,a4paper,oneside,openany,zihao=5,fontset=none]{ctexrep}
+
+\input{metadata}
+\usepackage{cotriage-report}
+\usepackage[
+  backend=biber,
+  style=gb7714-2015,
+  gbnamefmt=familyahead,
+  sorting=none
+]{biblatex}
+\addbibresource{references.bib}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\MakeCoTriageCover
+\hypersetup{pageanchor=true}
+\pagenumbering{Roman}
+\MakeCapabilityOverview
+\begingroup
+\small
+\tableofcontents
+\endgroup
+\clearpage
+
+\pagenumbering{arabic}
+\chapter{版式样张}
+\section{正文、图与引用}
+CoTriage 将连续日志组织为“多节点采集—边缘分层推理—动态路由—云端诊断—反馈写回”的事件链。Redis Streams 提供持续事件传递基础\cite{redisstreams}，Kubernetes 支撑组件部署与扩展\cite{kubernetes}。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/cotriage-system-architecture.pdf}
+  \caption{矢量架构图样张}
+\end{figure}
+
+\section{公式与算法}
+\begin{equation}
+S_t=\beta_vV(e_t)+\beta_gG(e_t)-\beta_kK(e_t,s_t).
+\end{equation}
+
+\begin{algorithm}[htbp]
+  \caption{三动作路由版式样张}
+  \KwInput{事件、边缘结果、系统状态与运维策略}
+  \KwOutput{\texttt{LOCAL}、\texttt{CLOUD} 或 \texttt{DEFER}}
+  执行硬策略并计算事件分数与动态门槛\;
+  根据发送条件输出动作并保存解释\;
+\end{algorithm}
+
+\section{宽表与运行截图}
+\input{tables/competition-metrics}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/s-11-competition-metrics-dashboard.png}
+  \caption{运行看板样张}
+\end{figure}
+
+\clearpage
+\printbibliography[heading=bibintoc,title={参考文献}]
+\end{document}

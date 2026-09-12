@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="36" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="68" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">六个核心组件围绕统一事件形成诊断闭环</text>
+    <text x="72" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">主数据链自左向右流动，配置与反馈反向写回，运行状态在观测面集中呈现</text>
+    <text x="1232" y="64" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">03  ARCHITECTURE</text>
+  </g>
+  <g id="reading-key">
+    <rect x="798" y="83" width="118" height="30" rx="15" fill="#16A6B6"/>
+    <text x="857" y="104" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">数据面</text>
+    <rect x="928" y="83" width="118" height="30" rx="15" fill="#F59E0B"/>
+    <text x="987" y="104" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">控制面</text>
+    <rect x="1058" y="83" width="118" height="30" rx="15" fill="#163A5F"/>
+    <text x="1117" y="104" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">观测面</text>
+  </g>
+  <g id="architecture-frame">
+    <rect x="148" y="126" width="984" height="554" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="2"/>
+    <image x="160" y="133" width="960" height="540" xlink:href="../images/cotriage-system-architecture.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="687" x2="1232" y2="687" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="708" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">总体方案</text>
+    <text x="1232" y="708" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">05</text>
+  </g>
+</svg>

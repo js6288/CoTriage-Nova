@@ -1,0 +1,30 @@
+CoTriage 围绕一条连续业务链组织能力：先在多节点就近获取日志，再以统一事件承载边缘判断与路由信息，最后让真正需要更强语义能力的事件进入云端深诊。下表给出四项核心能力及其在报告中的阅读入口。
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{CoTriage 核心能力与阅读入口}
+  \label{tab:review-matrix}
+  \begin{tabularx}{\textwidth}{>{\bfseries\raggedright\arraybackslash}p{0.20\textwidth} X >{\raggedright\arraybackslash}p{0.22\textwidth}}
+    \toprule
+    核心能力 & 系统如何实现 & 阅读入口 \\
+    \midrule
+    多节点实时感知 & 节点近端采集、统一事件化、Redis Streams 传递和实时驾驶舱展示 & 第 2--4、8 章 \\
+    边缘分层推理 & 规则、模板、轻量模型和边缘小语言模型按成本分层处理，并保留明确降级路径 & 第 5 章 \\
+    动态云边协同 & RAISE 联合风险、不确定性、网络、队列和预算选择 \texttt{LOCAL/CLOUD/DEFER} & 第 6--7 章 \\
+    弱网保障与在线治理 & Outbox 优先补传、重试与死信处理，以及规则、模型和 Provider 在线配置 & 第 6、8--9 章 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\begin{tcolorbox}[
+  colback=CoTriageGray,
+  colframe=CoTriageCyan,
+  boxrule=0.7pt,
+  arc=1mm,
+  title={建议阅读路径},
+  coltitle=CoTriageNavy,
+  fonttitle=\bfseries\sffamily
+]
+快速了解作品时，可先阅读第 3 章总体架构，再沿第 4--8 章依次查看采集、推理、路由、云端诊断和管理展示；第 9 章集中说明赛题指标如何映射到当前运行页面及其统计边界。
+\end{tcolorbox}

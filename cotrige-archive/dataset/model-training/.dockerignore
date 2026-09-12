@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.cache/
+runs/
+checkpoints/
+outputs/*
+!outputs/bgl-minilm/
+!outputs/bgl-minilm/onnx/
+!outputs/bgl-minilm/onnx/**
+environment.yml
+requirements.txt
+train_bgl_classifier.py
+export_onnx.py
+predict.py
+README.md

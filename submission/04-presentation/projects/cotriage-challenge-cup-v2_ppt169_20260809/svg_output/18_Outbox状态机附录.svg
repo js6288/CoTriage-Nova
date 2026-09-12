@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="34" width="8" height="46" rx="4" fill="#163A5F"/>
+    <text x="72" y="66" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">附录 C：Outbox 重试与死信状态机</text>
+    <text x="72" y="102" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">持久化、条件领取、退避重试和死信留痕，让延期请求的失败过程可追踪、可运维</text>
+    <rect x="1128" y="42" width="104" height="34" rx="17" fill="#E9EEF3"/>
+    <text x="1180" y="65" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">Q&amp;A  C</text>
+  </g>
+  <g id="state-machine-panel">
+    <rect x="48" y="132" width="900" height="508" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="74" y="168" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">延期请求生命周期</text>
+    <circle cx="122" cy="270" r="30" fill="#E9EEF3" stroke="#60758A" stroke-width="2"/>
+    <use data-icon="chunk-filled/file" x="105" y="253" width="34" height="34" fill="#60758A"/>
+    <text x="122" y="320" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">DEFER 请求</text>
+    <line x1="152" y1="270" x2="194" y2="270" stroke="#F59E0B" stroke-width="4"/><polygon points="194,261 212,270 194,279" fill="#F59E0B"/>
+
+    <rect x="212" y="222" width="190" height="96" rx="16" fill="#163A5F"/>
+    <text x="307" y="258" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-size="22" font-weight="700" fill="#FFFFFF">PENDING</text>
+    <text x="307" y="287" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">持久化等待到期领取</text>
+    <line x1="402" y1="270" x2="466" y2="270" stroke="#F59E0B" stroke-width="4"/><polygon points="466,261 484,270 466,279" fill="#F59E0B"/>
+    <text x="443" y="252" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">条件更新领取</text>
+
+    <rect x="484" y="222" width="190" height="96" rx="16" fill="#F59E0B"/>
+    <text x="579" y="258" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-size="22" font-weight="700" fill="#FFFFFF">SENDING</text>
+    <text x="579" y="287" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">锁定任务并尝试发送</text>
+    <line x1="674" y1="270" x2="738" y2="270" stroke="#2E7D32" stroke-width="4"/><polygon points="738,261 756,270 738,279" fill="#2E7D32"/>
+    <text x="715" y="252" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#2E7D32">成功</text>
+
+    <rect x="756" y="222" width="160" height="96" rx="16" fill="#2E7D32"/>
+    <use data-icon="chunk-filled/checkmark" x="777" y="246" width="38" height="38" fill="#FFFFFF"/>
+    <text x="830" y="258" font-family="Consolas, Courier New, monospace" font-size="22" font-weight="700" fill="#FFFFFF">SENT</text>
+    <text x="836" y="287" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">发送完成并留存结果</text>
+
+    <line x1="579" y1="318" x2="579" y2="366" stroke="#C62828" stroke-width="4"/><polygon points="570,366 579,384 588,366" fill="#C62828"/>
+    <text x="596" y="350" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#C62828">发送失败</text>
+    <rect x="484" y="384" width="190" height="96" rx="16" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+    <text x="579" y="420" text-anchor="middle" font-family="Consolas, Courier New, monospace" font-size="22" font-weight="700" fill="#163A5F">RETRY</text>
+    <text x="579" y="449" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">记录失败并计算下次时间</text>
+
+    <path d="M484 432 L352 432 L352 336 L307 336 L307 318" fill="none" stroke="#F59E0B" stroke-width="4"/>
+    <polygon points="298,336 307,318 316,336" fill="#F59E0B"/>
+    <text x="396" y="418" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">未超过次数：退避后返回</text>
+
+    <line x1="674" y1="432" x2="738" y2="432" stroke="#C62828" stroke-width="4"/><polygon points="738,423 756,432 738,441" fill="#C62828"/>
+    <text x="715" y="414" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#C62828">超过允许次数</text>
+    <rect x="756" y="384" width="160" height="96" rx="16" fill="#FFFFFF" stroke="#C62828" stroke-width="2"/>
+    <use data-icon="chunk-filled/circle-exclamation" x="777" y="408" width="38" height="38" fill="#C62828"/>
+    <text x="830" y="420" font-family="Consolas, Courier New, monospace" font-size="22" font-weight="700" fill="#C62828">DLQ</text>
+    <text x="836" y="449" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">死信留痕并等待处置</text>
+
+    <rect x="108" y="526" width="732" height="72" rx="14" fill="#E9EEF3"/>
+    <text x="132" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="700" fill="#163A5F">每条记录保存：</text>
+    <text x="258" y="555" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">event_id · payload · priority · deadline · attempt_count · defer_reason</text>
+    <text x="132" y="580" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">流程状态用于追踪工程行为；实际补传结果需要结合当时网络、队列与云端响应观察</text>
+  </g>
+  <g id="concurrency-panel">
+    <rect x="972" y="132" width="260" height="508" rx="18" fill="#163A5F"/>
+    <text x="998" y="174" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">并发与恢复机制</text>
+    <rect x="994" y="206" width="216" height="110" rx="14" fill="#FFFFFF"/>
+    <use data-icon="chunk-filled/route" x="1012" y="226" width="34" height="34" fill="#F59E0B"/>
+    <text x="1060" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">优先排序</text>
+    <text x="1012" y="278" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">按路由分数、截止时间</text>
+    <text x="1012" y="300" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">与创建时间选择任务</text>
+    <rect x="994" y="334" width="216" height="110" rx="14" fill="#FFFFFF"/>
+    <use data-icon="chunk-filled/lock-closed" x="1012" y="354" width="34" height="34" fill="#16A6B6"/>
+    <text x="1060" y="370" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">条件抢占</text>
+    <text x="1012" y="406" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">多实例通过条件更新</text>
+    <text x="1012" y="428" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">避免重复领取同一任务</text>
+    <rect x="994" y="462" width="216" height="110" rx="14" fill="#FFFFFF"/>
+    <use data-icon="chunk-filled/clock" x="1012" y="482" width="34" height="34" fill="#60758A"/>
+    <text x="1060" y="498" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">超时锁回收</text>
+    <text x="1012" y="534" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">异常实例留下的锁</text>
+    <text x="1012" y="556" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">到期后可重新领取</text>
+    <rect x="1020" y="594" width="164" height="30" rx="15" fill="#F59E0B"/>
+    <text x="1102" y="615" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">周期扫描到期任务</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">问答附录 C</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">18</text>
+  </g>
+</svg>

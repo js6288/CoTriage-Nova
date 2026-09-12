@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="36" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="68" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">功能六：规则、边缘模型与云端能力在线治理</text>
+    <text x="72" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">推理能力和服务连接不再固化于代码，而是进入统一的可操作管理中心</text>
+    <text x="1232" y="64" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">08  GOVERNANCE</text>
+  </g>
+  <g id="rule-card">
+    <rect x="48" y="134" width="373" height="488" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="48" y="134" width="373" height="58" rx="18" fill="#163A5F"/>
+    <rect x="48" y="176" width="373" height="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/file" x="70" y="147" width="32" height="32" fill="#FFFFFF"/>
+    <text x="116" y="171" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">规则管理</text>
+    <image x="60" y="206" width="349" height="218" xlink:href="../images/s-08a-rule-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <line x1="72" y1="442" x2="397" y2="442" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="72" y="476" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">可管理对象</text>
+    <text x="72" y="510" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">匹配条件、优先级与动作</text>
+    <text x="72" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">启停状态与版本信息</text>
+    <rect x="72" y="568" width="144" height="32" rx="16" fill="#E9EEF3"/>
+    <text x="144" y="590" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">策略入口统一</text>
+  </g>
+  <g id="model-card">
+    <rect x="454" y="134" width="373" height="488" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="454" y="134" width="373" height="58" rx="18" fill="#16A6B6"/>
+    <rect x="454" y="176" width="373" height="16" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/robot" x="476" y="147" width="32" height="32" fill="#FFFFFF"/>
+    <text x="522" y="171" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">边缘模型管理</text>
+    <image x="466" y="206" width="349" height="218" xlink:href="../images/s-09a-minilm-model-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <line x1="478" y1="442" x2="803" y2="442" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="478" y="476" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">可管理对象</text>
+    <text x="478" y="510" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">模型版本、状态与元数据</text>
+    <text x="478" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">发布记录与能力切换</text>
+    <rect x="478" y="568" width="144" height="32" rx="16" fill="#E9EEF3"/>
+    <text x="550" y="590" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">模型资产可见</text>
+  </g>
+  <g id="provider-card">
+    <rect x="860" y="134" width="372" height="488" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="860" y="134" width="372" height="58" rx="18" fill="#F59E0B"/>
+    <rect x="860" y="176" width="372" height="16" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/cloud" x="882" y="147" width="32" height="32" fill="#FFFFFF"/>
+    <text x="928" y="171" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">云端 Provider 管理</text>
+    <image x="872" y="206" width="348" height="218" xlink:href="../images/s-09c-cloud-provider-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <line x1="884" y1="442" x2="1208" y2="442" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="884" y="476" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">可管理对象</text>
+    <text x="884" y="510" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">Provider、模型与连接参数</text>
+    <text x="884" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1D2F42">启用状态与调用配置</text>
+    <rect x="884" y="568" width="144" height="32" rx="16" fill="#E9EEF3"/>
+    <text x="956" y="590" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">云能力可替换</text>
+  </g>
+  <g id="governance-note">
+    <rect x="368" y="640" width="544" height="30" rx="15" fill="#163A5F"/>
+    <text x="640" y="661" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">统一入口负责配置治理；实际生效状态以管理页面发布记录为准</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="684" x2="1232" y2="684" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="706" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">在线配置与管理中心</text>
+    <text x="1232" y="706" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">11</text>
+  </g>
+</svg>

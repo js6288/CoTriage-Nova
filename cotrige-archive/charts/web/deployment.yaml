@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: web, namespace: cotriage }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: web } }
+  template:
+    metadata: { labels: { app: web } }
+    spec:
+      containers:
+        - name: web
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/web:v0.0.1-202608091326
+          imagePullPolicy: Always
+          ports: [{ name: http, containerPort: 80 }]
+          readinessProbe: { httpGet: { path: /, port: http }, initialDelaySeconds: 5, periodSeconds: 10 }
+          resources:
+            requests: { cpu: 25m, memory: 32Mi }
+            limits: { cpu: 250m, memory: 128Mi }
+      imagePullSecrets: [{ name: docker-registry-secret }]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: web, namespace: cotriage }
+spec:
+  type: NodePort
+  selector: { app: web }
+  ports: [{ name: http, port: 80, targetPort: http, nodePort: 30517 }]

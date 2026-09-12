@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="40" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="72" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">全边缘看不全、全上云不够快</text>
+    <text x="72" y="108" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">工业现场需要面向每条事件的云边协同，而不是固定选择单一计算位置</text>
+    <text x="1232" y="68" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">01  WHY</text>
+  </g>
+  <g id="pillars">
+    <rect x="64" y="150" width="344" height="398" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="64" y="150" width="344" height="76" rx="18" fill="#163A5F"/>
+    <rect x="64" y="208" width="344" height="18" fill="#163A5F"/>
+    <use data-icon="chunk-filled/file" x="91" y="168" width="38" height="38" fill="#FFFFFF"/>
+    <text x="145" y="198" font-family="Microsoft YaHei, Arial, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">仅靠规则</text>
+    <text x="92" y="272" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">优势</text>
+    <text x="92" y="303" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">响应直接、解释清楚</text>
+    <line x1="92" y1="327" x2="380" y2="327" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="92" y="368" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#C62828">现场矛盾</text>
+    <text x="92" y="404" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">未知模式难覆盖</text>
+    <text x="92" y="438" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">跨节点关联能力有限</text>
+    <rect x="92" y="480" width="132" height="36" rx="18" fill="#E9EEF3"/>
+    <text x="158" y="504" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">覆盖边界固定</text>
+
+    <rect x="468" y="150" width="344" height="398" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="468" y="150" width="344" height="76" rx="18" fill="#16A6B6"/>
+    <rect x="468" y="208" width="344" height="18" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/server" x="495" y="168" width="38" height="38" fill="#FFFFFF"/>
+    <text x="549" y="198" font-family="Microsoft YaHei, Arial, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">全部留在边缘</text>
+    <text x="496" y="272" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">优势</text>
+    <text x="496" y="303" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">实时、自治、数据就近</text>
+    <line x1="496" y1="327" x2="784" y2="327" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="496" y="368" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#C62828">现场矛盾</text>
+    <text x="496" y="404" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">算力与上下文受限</text>
+    <text x="496" y="438" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">复杂根因难以深挖</text>
+    <rect x="496" y="480" width="132" height="36" rx="18" fill="#E9EEF3"/>
+    <text x="562" y="504" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">能力上限受限</text>
+
+    <rect x="872" y="150" width="344" height="398" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="872" y="150" width="344" height="76" rx="18" fill="#F59E0B"/>
+    <rect x="872" y="208" width="344" height="18" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/cloud" x="899" y="168" width="38" height="38" fill="#FFFFFF"/>
+    <text x="953" y="198" font-family="Microsoft YaHei, Arial, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">全部上传云端</text>
+    <text x="900" y="272" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">优势</text>
+    <text x="900" y="303" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">全局上下文、深度诊断</text>
+    <line x1="900" y1="327" x2="1188" y2="327" stroke="#E9EEF3" stroke-width="2"/>
+    <text x="900" y="368" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#C62828">现场矛盾</text>
+    <text x="900" y="404" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">时延、带宽与预算压力</text>
+    <text x="900" y="438" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#1D2F42">弱网下主链易受阻</text>
+    <rect x="900" y="480" width="132" height="36" rx="18" fill="#E9EEF3"/>
+    <text x="966" y="504" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">现场约束敏感</text>
+  </g>
+  <g id="answer-strip">
+    <rect x="122" y="582" width="1036" height="66" rx="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/route" x="151" y="596" width="38" height="38" fill="#F59E0B"/>
+    <text x="211" y="624" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">CoTriage：综合现场状态，为每条事件选择</text>
+    <rect x="720" y="597" width="102" height="36" rx="18" fill="#16A6B6"/>
+    <text x="771" y="621" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">LOCAL</text>
+    <rect x="836" y="597" width="102" height="36" rx="18" fill="#F59E0B"/>
+    <text x="887" y="621" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CLOUD</text>
+    <rect x="952" y="597" width="102" height="36" rx="18" fill="#60758A"/>
+    <text x="1003" y="621" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">DEFER</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="682" x2="1232" y2="682" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="705" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">项目痛点</text>
+    <text x="1232" y="705" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">02</text>
+  </g>
+</svg>

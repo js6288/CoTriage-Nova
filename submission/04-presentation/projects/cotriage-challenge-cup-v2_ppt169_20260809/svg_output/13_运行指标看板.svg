@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="34" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="66" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">赛事要求已被组织成统一的运行指标观测面</text>
+    <text x="72" y="102" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">同一页面集中呈现实时性、推理、路由、通信与一致性相关运行信息</text>
+    <rect x="1032" y="78" width="200" height="34" rx="17" fill="#163A5F"/>
+    <use data-icon="chunk-filled/eye" x="1050" y="87" width="18" height="18" fill="#FFFFFF"/>
+    <text x="1080" y="101" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">当前运行窗口</text>
+  </g>
+  <g id="metrics-frame">
+    <rect x="40" y="128" width="1200" height="554" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="2"/>
+    <image x="48" y="136" width="1184" height="538" xlink:href="../images/s-11-competition-metrics-dashboard.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="688" x2="1232" y2="688" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="708" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">当前运行窗口指标展示</text>
+    <text x="1232" y="708" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">13</text>
+  </g>
+</svg>

@@ -1,0 +1,210 @@
+% CoTriage 挑战杯作品报告样式。
+% 设计目标是中性、专业、功能导向；避免书籍模板的装饰性章页。
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cotriage-report}[2026/07/30 CoTriage report style]
+
+% 版芯：A4 单栏，左右 25 mm、上 24 mm、下 26 mm。
+\RequirePackage[left=25mm,right=25mm,top=24mm,bottom=26mm,headheight=21pt,headsep=6mm]{geometry}
+\RequirePackage{fontspec}
+\RequirePackage{xeCJK}
+\RequirePackage{setspace}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{tabularx}
+\RequirePackage{placeins}
+\RequirePackage{array}
+\RequirePackage{makecell}
+\RequirePackage{multirow}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{algorithm2e}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{csquotes}
+\RequirePackage{etoolbox}
+\RequirePackage{hyperref}
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+
+% 字体显式绑定到 TeX Live 自带字体，以保证跨 Windows/Linux 环境复现。
+% 按 TeX Live 字体文件名加载，避免受宿主机 fontconfig 缓存状态影响。
+\setmainfont{texgyretermes-regular.otf}[
+  BoldFont=texgyretermes-bold.otf,
+  ItalicFont=texgyretermes-italic.otf,
+  BoldItalicFont=texgyretermes-bolditalic.otf
+]
+\setsansfont{texgyreheros-regular.otf}[
+  BoldFont=texgyreheros-bold.otf,
+  ItalicFont=texgyreheros-italic.otf,
+  BoldItalicFont=texgyreheros-bolditalic.otf
+]
+\setmonofont{texgyrecursor-regular.otf}[
+  BoldFont=texgyrecursor-bold.otf,
+  ItalicFont=texgyrecursor-italic.otf,
+  BoldItalicFont=texgyrecursor-bolditalic.otf,
+  Scale=MatchLowercase
+]
+\setCJKmainfont{FandolSong-Regular.otf}[
+  BoldFont=FandolSong-Bold.otf,
+  ItalicFont=FandolKai-Regular.otf
+]
+\setCJKsansfont{FandolHei-Regular.otf}[BoldFont=FandolHei-Bold.otf]
+\setCJKmonofont{FandolFang-Regular.otf}
+
+% 全文约 1.4 倍行距，段间距用于增强技术报告的扫描效率。
+\setstretch{1.4}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.15em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.18}
+\setlist{nosep,leftmargin=2.2em}
+\raggedbottom
+\emergencystretch=2em
+
+% 统一色板：海军蓝为主色，青色为数据流，橙色为关键决策，红色只表示故障。
+\definecolor{CoTriageNavy}{HTML}{163A5F}
+\definecolor{CoTriageCyan}{HTML}{1597A5}
+\definecolor{CoTriageOrange}{HTML}{E07A2D}
+\definecolor{CoTriageRed}{HTML}{B23A3A}
+\definecolor{CoTriageGray}{HTML}{F2F4F6}
+\definecolor{CoTriageMidGray}{HTML}{66727D}
+\definecolor{CoTriageDark}{HTML}{202A33}
+
+% 标题保持克制：不使用装饰章页，也不强制奇数页开章。
+\ctexset{
+  chapter = {
+    format = \normalfont\sffamily\bfseries\color{CoTriageNavy}\huge,
+    name = {第,章},
+    number = \arabic{chapter},
+    beforeskip = 0pt,
+    afterskip = 20pt,
+    fixskip = true
+  },
+  section = {
+    format = \normalfont\sffamily\bfseries\color{CoTriageNavy}\Large,
+    beforeskip = 1.3ex,
+    afterskip = 0.7ex
+  },
+  subsection = {
+    format = \normalfont\sffamily\bfseries\color{CoTriageDark}\large,
+    beforeskip = 1.0ex,
+    afterskip = 0.5ex
+  }
+}
+
+% 页眉页脚只保留作品短标题和章节名，降低视觉噪声。
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{CoTriageMidGray}\ReportShortTitle}
+\fancyhead[R]{\small\color{CoTriageMidGray}\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\color{CoTriageMidGray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{CoTriageNavy}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\color{CoTriageMidGray}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% 图表和算法统一采用“编号 + 结论性标题”的报告风格。
+\captionsetup{
+  font=small,
+  labelfont={bf,color=CoTriageNavy},
+  textfont={color=CoTriageDark},
+  labelsep=quad,
+  justification=centering
+}
+\renewcommand{\algorithmcfname}{算法}
+\SetAlgoCaptionSeparator{\quad}
+\SetKwInput{KwInput}{输入}
+\SetKwInput{KwOutput}{输出}
+\SetKw{KwRet}{返回}
+
+% 超链接在屏幕版可识别，打印时不会出现彩色方框。
+\hypersetup{
+  colorlinks=true,
+  linkcolor=CoTriageNavy,
+  citecolor=CoTriageCyan,
+  urlcolor=CoTriageCyan,
+  pdfborder={0 0 0}
+}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{equation}{式}{式}
+\crefname{algorithm}{算法}{算法}
+
+% 赛事申报式封面：参考正式报名材料的留白、标题与信息栏组织，
+% 不放未经授权的赛事标识，不使用装饰性图片。
+\newcommand{\MakeCoTriageCover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \setlength{\parindent}{0pt}
+    \color{black}
+
+    \vspace*{5mm}
+    {\zihao{-4}作品编码：\hspace{2mm}%
+      \makebox[68mm][c]{\raisebox{0.5mm}{\bfseries\zihao{4}\ReportEntryCode}}\par}
+    \vspace{-2mm}
+    \hspace{27mm}\rule{68mm}{0.45pt}
+
+    \vspace{40mm}
+    \begin{center}
+      {\bfseries\sffamily\fontsize{20pt}{30pt}\selectfont
+        \ReportCompetition\par}
+      \vspace{1mm}
+      {\bfseries\sffamily\fontsize{20pt}{30pt}\selectfont
+        \ReportTrack\par}
+      \vspace{9mm}
+      {\bfseries\sffamily\fontsize{18pt}{26pt}\selectfont
+        作品报告\par}
+    \end{center}
+
+    \vspace{18mm}
+    \begingroup
+      \zihao{-4}
+      \renewcommand{\arraystretch}{1.42}
+      \setlength{\tabcolsep}{2pt}
+      \begin{tabularx}{\textwidth}{>{\bfseries}p{32mm} X}
+        推荐学校名称： & \centering\arraybackslash \ReportSchool \\
+        \cline{2-2}
+        揭榜榜题名称： & \centering\arraybackslash \ReportTopic \\
+        \cline{2-2}
+        发榜单位： & \centering\arraybackslash \ReportSponsor \\
+        \cline{2-2}
+        申报作品名称： & \centering\arraybackslash \ReportEntryTitle \\
+        \cline{2-2}
+        指导教师： & \centering\arraybackslash \ReportAdvisor \\
+        \cline{2-2}
+        申报者姓名： & \centering\arraybackslash \ReportMembers \\
+        \cline{2-2}
+        \multicolumn{2}{l}{\zihao{5}}
+      \end{tabularx}
+    \endgroup
+
+    \vfill
+    \begin{center}
+      {\zihao{5}\color{CoTriageMidGray}\ReportDate}
+    \end{center}
+    \vspace*{4mm}
+  \end{titlepage}
+}
+
+% 作品能力速览使用独立环境，不进入章节编号。
+\newcommand{\MakeCapabilityOverview}{%
+  \clearpage
+  \thispagestyle{plain}
+  \chapter*{作品能力速览}
+  \addcontentsline{toc}{chapter}{作品能力速览}
+  \input{tables/review-matrix}
+  \clearpage
+}
+
+% 避免换行命令污染 PDF 书签。
+\pdfstringdefDisableCommands{%
+  \def\\{ }%
+}

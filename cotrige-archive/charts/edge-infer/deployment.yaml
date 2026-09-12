@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: edge-infer, namespace: cotriage }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: edge-infer } }
+  template:
+    metadata: { labels: { app: edge-infer } }
+    spec:
+      containers:
+        - name: edge-infer
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/edge-infer:v0.0.1-202608081730
+          imagePullPolicy: Always
+          env:
+            - { name: REDIS_ADDR, value: "redis:6379" }
+            - { name: EDGE_CONFIG_URL, value: "http://server:8080/api/v1/edge-config" }
+            - { name: CLASSIFIER_URL, value: "http://onnx-classifier:18080/predict" }
+            - name: CONSUMER_NAME
+              valueFrom: { fieldRef: { fieldPath: metadata.name } }
+          resources:
+            requests: { cpu: 50m, memory: 64Mi }
+            limits: { cpu: 500m, memory: 256Mi }
+      imagePullSecrets: [{ name: docker-registry-secret }]

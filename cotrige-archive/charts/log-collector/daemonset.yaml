@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cotriage-log-collector
+  namespace: cotriage
+spec:
+  selector:
+    matchLabels:
+      app: cotriage-log-collector
+  template:
+    metadata:
+      labels:
+        app: cotriage-log-collector
+    spec:
+      serviceAccountName: cotriage-log-collector
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
+      containers:
+        - name: log-collector
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/log-collector:v0.0.1-202605271813
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: LOG_PATH
+              value: /var/log/cotriage/input/current.log
+            - name: REDIS_ADDR
+              value: redis:6379
+            - name: REDIS_STREAM
+              value: cotriage.events.raw
+            - name: REDIS_STREAM_MAXLEN
+              value: "100000"
+          volumeMounts:
+            - name: cotriage-varlog
+              mountPath: /var/log/cotriage
+      volumes:
+        - name: cotriage-varlog
+          hostPath:
+            path: /var/log/cotriage
+            type: DirectoryOrCreate
+      imagePullSecrets:
+        - name: regcred

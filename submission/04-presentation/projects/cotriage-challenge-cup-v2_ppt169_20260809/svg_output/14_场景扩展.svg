@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="34" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="66" font-family="Microsoft YaHei, Arial, sans-serif" font-size="36" font-weight="700" fill="#163A5F">模块化部署支持两类工业场景按统一接口接入</text>
+    <text x="72" y="102" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">场景差异由适配层吸收，统一事件与推理接口保持核心链路稳定</text>
+    <text x="1232" y="62" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">09  EXTENSION</text>
+  </g>
+  <g id="scenarios">
+    <rect x="112" y="126" width="420" height="86" rx="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/factory" x="136" y="147" width="44" height="44" fill="#FFFFFF"/>
+    <text x="200" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">工业设备与生产服务</text>
+    <text x="200" y="188" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">设备日志、应用日志、现场告警</text>
+    <rect x="748" y="126" width="420" height="86" rx="16" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/server" x="772" y="147" width="44" height="44" fill="#FFFFFF"/>
+    <text x="836" y="160" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">分布式基础设施</text>
+    <text x="836" y="188" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">数据库、中间件、计算与存储节点</text>
+    <line x1="322" y1="212" x2="322" y2="238" stroke="#16A6B6" stroke-width="4"/><line x1="958" y1="212" x2="958" y2="238" stroke="#16A6B6" stroke-width="4"/>
+    <line x1="322" y1="238" x2="958" y2="238" stroke="#16A6B6" stroke-width="4"/>
+    <line x1="640" y1="238" x2="640" y2="258" stroke="#16A6B6" stroke-width="4"/><polygon points="630,258 640,276 650,258" fill="#16A6B6"/>
+  </g>
+  <g id="platform-layers">
+    <rect x="132" y="276" width="1016" height="70" rx="16" fill="#FFFFFF" stroke="#16A6B6" stroke-width="2"/>
+    <use data-icon="chunk-filled/link" x="158" y="293" width="36" height="36" fill="#16A6B6"/>
+    <text x="214" y="309" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#163A5F">接入适配与统一事件层</text>
+    <text x="1118" y="309" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">Agent · 文件 · HTTP · SDK · 标准字段</text>
+    <text x="214" y="334" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">隔离来源差异，统一 event_id、时间、来源、内容与追踪元数据</text>
+
+    <rect x="172" y="360" width="936" height="70" rx="16" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/layers" x="198" y="377" width="36" height="36" fill="#FFFFFF"/>
+    <text x="254" y="393" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">边缘智能与动态路由层</text>
+    <text x="1078" y="393" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#FFFFFF">规则 · 模板 · MiniLM · 边缘 LLM · RAISE</text>
+    <text x="254" y="418" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">模型可替换，LOCAL / CLOUD / DEFER 动作语义保持一致</text>
+
+    <rect x="212" y="444" width="856" height="70" rx="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/cloud" x="238" y="461" width="36" height="36" fill="#FFFFFF"/>
+    <text x="294" y="477" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">云端诊断与配置治理层</text>
+    <text x="1038" y="477" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#FFFFFF">上下文聚合 · 深诊 · 反馈 · 在线配置</text>
+    <text x="294" y="502" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">Provider、模型与策略通过统一管理入口组织</text>
+
+    <rect x="252" y="528" width="776" height="58" rx="16" fill="#E9EEF3" stroke="#CBD7E3" stroke-width="1.5"/>
+    <use data-icon="chunk-filled/database" x="278" y="541" width="32" height="32" fill="#60758A"/>
+    <text x="330" y="564" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">数据与通信底座</text>
+    <text x="998" y="564" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">Redis Streams · MySQL · REST · SSE · Outbox</text>
+  </g>
+  <g id="node-types">
+    <text x="48" y="620" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">可接入节点类型</text>
+    <rect x="176" y="600" width="220" height="42" rx="12" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/><text x="286" y="627" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">生产服务</text>
+    <rect x="412" y="600" width="220" height="42" rx="12" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/><text x="522" y="627" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">数据库</text>
+    <rect x="648" y="600" width="220" height="42" rx="12" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/><text x="758" y="627" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">中间件</text>
+    <rect x="884" y="600" width="220" height="42" rx="12" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/><text x="994" y="627" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">基础设施节点</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">模块化部署与场景适配</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">14</text>
+  </g>
+</svg>

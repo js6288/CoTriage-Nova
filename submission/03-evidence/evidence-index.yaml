@@ -1,0 +1,270 @@
+# CoTriage 参赛材料统一证据索引。
+#
+# status 仅允许：
+# - verified_local：已通过当前仓库代码或文档核对；
+# - pending_external：等待开发/实验负责人提供原始数据或截图；
+# - verified_external：外部证据已完成文件、口径与结果核验。
+#
+# 报告、工程文档和 PPT 必须复用这里的 id。任何量化结论只有在
+# status=verified_external 后才能写入对外材料。
+
+schema_version: 1
+updated_at: 2026-07-30
+entries:
+  - id: EVID-ARCH-01
+    claim: 核心链路由日志采集、边缘推理、RAISE 路由、云端诊断、控制面和 Web 组成
+    metric: null
+    definition: 以当前服务入口、消息流配置和系统设计文档交叉核对
+    unit: null
+    aggregation: null
+    required_files:
+      - README.md
+      - design_doc/main.md
+      - server/internal/api/router.go
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-COLLECT-01
+    claim: log-collector 将日志事件写入 cotriage.events.raw
+    metric: null
+    definition: 以采集器默认配置和写入实现为准
+    unit: null
+    aggregation: null
+    required_files:
+      - log-collector/main.go
+      - design_doc/log-collector.md
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-EDGE-01
+    claim: edge-infer 实现 RULE、CACHE、MODEL、EDGE_LLM 四级推理与 FALLBACK 降级支路
+    metric: null
+    definition: 分类器缺失或报错进入 FALLBACK；边缘 LLM 缺失或失败时保留 MODEL 结果并记录错误
+    unit: null
+    aggregation: null
+    required_files:
+      - edge-infer/internal/infer/
+      - edge-infer/internal/worker/
+      - design_doc/edge-infer.md
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-RAISE-01
+    claim: router-controller 根据价值、配置公式计算的预期增益、成本和动态阈值输出 LOCAL、CLOUD 或 DEFER
+    metric: null
+    definition: 以 RAISE 决策、运行状态、Outbox 和反馈处理代码为准；GainModel learned gain 当前未接入 Decide
+    unit: null
+    aggregation: null
+    required_files:
+      - router-controller/internal/raise/router.go
+      - router-controller/internal/runtime/
+      - router-controller/internal/replayer/
+      - router-controller/internal/feedback/
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-CLOUD-01
+    claim: cloud-gateway 实现上下文聚合、主日志与关联 raw_log 脱敏、Provider 调用和幂等反馈；其他提示字段尚未覆盖
+    metric: null
+    definition: 以网关工作流、诊断、Provider 和存储代码为准
+    unit: null
+    aggregation: null
+    required_files:
+      - cloud-gateway/internal/contextlog/
+      - cloud-gateway/internal/diagnosis/
+      - cloud-gateway/internal/provider/
+      - cloud-gateway/internal/store/
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-ENG-01
+    claim: Server 和 Web 提供事件、路由、Outbox、知识库与模型配置的控制和展示入口
+    metric: null
+    definition: 以当前后端路由表、前端路由和 API 客户端为准
+    unit: null
+    aggregation: null
+    required_files:
+      - server/internal/api/router.go
+      - web/src/router/index.ts
+      - web/src/api/
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-OPS-01
+    claim: 当前开发启动脚本会检查集群、清空 Redis、重启采集器、端口转发并启动本地组件
+    metric: null
+    definition: 仅作为开发环境操作事实，不表述为无副作用的生产部署
+    unit: null
+    aggregation: null
+    required_files:
+      - start-cotriage.sh
+      - script/forward-datastores.sh
+      - sop/
+    owner: 材料负责人
+    status: verified_local
+
+  - id: EVID-UI-01
+    claim: 关键页面与主链路状态可通过脱敏截图、查询结果或服务日志复核
+    metric: 演示证据完整性
+    definition: S-01 至 S-10 需包含时间、证据类型、关键状态和对应版本；S-05 使用 MySQL、Redis 或服务日志而非现有 Web，全部材料不得暴露敏感地址或凭据
+    unit: evidence_set
+    aggregation: 按演示步骤逐项验收
+    required_files:
+      - experiment_bundle/screenshots/S-01-dashboard-overview.png
+      - experiment_bundle/screenshots/S-02-multi-device-ingestion.png
+      - experiment_bundle/screenshots/S-03-inference-paths.png
+      - experiment_bundle/screenshots/S-04-raise-decisions.png
+      - experiment_bundle/screenshots/S-05-cloud-diagnosis-evidence.png
+      - experiment_bundle/screenshots/S-06-weak-network-state.png
+      - experiment_bundle/screenshots/S-07-recovery-observation.png
+      - experiment_bundle/screenshots/S-08-rules-templates.png
+      - experiment_bundle/screenshots/S-09-model-provider.png
+      - experiment_bundle/screenshots/S-10-kubernetes-health.png
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-MANIFEST-01
+    claim: 实验环境、版本、配置、数据划分、随机种子和结果文件能够复现
+    metric: 实验清单完整性
+    definition: manifest 中每项均能映射到实际文件并通过 checksums 校验
+    unit: checklist
+    aggregation: 全部必填项通过
+    required_files:
+      - experiment_bundle/manifest.yaml
+      - experiment_bundle/commands.md
+      - experiment_bundle/checksums.txt
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-ENV-01
+    claim: 边缘和云端实验环境信息完整
+    metric: 环境记录
+    definition: 记录节点角色、硬件、系统、Kubernetes、Redis、MySQL 与运行时版本
+    unit: environment_manifest
+    aggregation: 按节点与组件列示
+    required_files:
+      - experiment_bundle/manifest.yaml
+      - experiment_bundle/configs/
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-CAPABILITY-01
+    claim: 边缘模型在统一任务上的能力保持情况
+    metric: 能力保持率、Accuracy、Precision、Recall、F1、Macro-F1
+    definition: 教师与边缘模型必须使用同一测试样本、标签和评分脚本
+    unit: ratio
+    aggregation: 报告样本数、均值、标准差和置信区间
+    required_files:
+      - experiment_bundle/raw/model_predictions.csv
+      - experiment_bundle/summary/model_quality.csv
+      - experiment_bundle/configs/model.yaml
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-MEMORY-01
+    claim: 单次边缘推理的资源占用
+    metric: 峰值 RSS、CPU、模型文件大小、吞吐
+    definition: 区分模型加载、预热和稳态推理阶段，记录采样工具与间隔
+    unit: mixed
+    aggregation: 报告峰值与稳态统计
+    required_files:
+      - experiment_bundle/raw/resource_samples.csv
+      - experiment_bundle/summary/resource_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-LATENCY-01
+    claim: CoTriage 的首次有效决策与完整诊断时延
+    metric: P50、P95、P99、TTFT
+    definition: 分开记录边缘首次有效决策和异步云端完整诊断，所有节点说明时钟口径
+    unit: ms
+    aggregation: 按方法、场景和网络条件分别统计
+    required_files:
+      - experiment_bundle/raw/latency_events.csv
+      - experiment_bundle/summary/latency_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-QUALITY-01
+    claim: 各路由方法的故障识别与诊断质量
+    metric: Macro-F1、高风险 Recall、根因评价
+    definition: 各方法使用相同数据划分和标注口径
+    unit: ratio
+    aggregation: 按场景报告均值、误差和样本数
+    required_files:
+      - experiment_bundle/raw/method_predictions.csv
+      - experiment_bundle/summary/quality_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-COMM-01
+    claim: 分层推理与路由对通信和云端调用的影响
+    metric: 上云事件比例、上传字节数、Token 数、估算费用
+    definition: 按同一事件集合比较各方法，说明请求重试是否计入
+    unit: mixed
+    aggregation: 总量与每事件均值
+    required_files:
+      - experiment_bundle/raw/cloud_requests.csv
+      - experiment_bundle/summary/communication_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-WEAKNET-01
+    claim: 网络波动期间的业务保持与恢复表现
+    metric: 本地有效决策率、任务成功率、补传成功率、恢复时间
+    definition: 提供 RTT、丢包、断网和恢复时间轴，并与事件及 Outbox 记录对齐
+    unit: ratio_and_seconds
+    aggregation: 按网络阶段和重复轮次统计
+    required_files:
+      - experiment_bundle/raw/network_trace.csv
+      - experiment_bundle/raw/outbox_events.csv
+      - experiment_bundle/summary/weak_network_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-RELIABILITY-01
+    claim: 故障与重试条件下消息处理保持可靠
+    metric: 成功率、重复率、DLQ 数、恢复时间
+    definition: 对 Redis、MySQL、Provider 和进程故障分别注入并记录事件状态
+    unit: mixed
+    aggregation: 按故障类型统计
+    required_files:
+      - experiment_bundle/raw/fault_injection_events.csv
+      - experiment_bundle/summary/reliability_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-CONSISTENCY-01
+    claim: 多节点关联任务中的冲突和解决情况
+    metric: 冲突率、冲突解决成功率
+    definition: 先冻结关联任务、冲突和正确解决的判定规则，再统计结果
+    unit: ratio
+    aggregation: 按场景和故障类型统计
+    required_files:
+      - experiment_bundle/raw/consistency_cases.csv
+      - experiment_bundle/summary/consistency_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-ABLATION-01
+    claim: RAISE 各组成部分的独立贡献
+    metric: 任务效果、高风险漏报、上云比例、P95 时延、弱网表现
+    definition: 除被移除模块外保持数据、配置与网络轨迹一致
+    unit: mixed
+    aggregation: 按消融变体和场景统计
+    required_files:
+      - experiment_bundle/raw/ablation_runs.csv
+      - experiment_bundle/summary/ablation_summary.csv
+    owner: 开发与实验负责人
+    status: pending_external
+
+  - id: EVID-EXP-CLOUD-01
+    claim: 云端模型和调用参数可追溯
+    metric: Provider 配置与模型版本
+    definition: 记录模型、参数、API 区域、重试和限流策略，不保存密钥
+    unit: config_manifest
+    aggregation: 按实验批次记录
+    required_files:
+      - experiment_bundle/configs/cloud_provider.yaml
+    owner: 开发与实验负责人
+    status: pending_external

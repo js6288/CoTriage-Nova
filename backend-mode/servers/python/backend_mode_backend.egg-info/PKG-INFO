@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: backend-mode-backend
+Version: 0.1.0
+Summary: Python WebSocket backend for the Spatius Backend Mode demo (ASR → LLM → TTS pipeline)
+Requires-Python: >=3.11
+Requires-Dist: spatius<2.0.0,>=1.0.2
+Requires-Dist: fastapi<1.0,>=0.115
+Requires-Dist: httpx<1.0,>=0.28
+Requires-Dist: python-dotenv<2.0,>=1.0
+Requires-Dist: uvicorn[standard]<1.0,>=0.32
+Requires-Dist: websockets<16,>=14
+Requires-Dist: python-socks[asyncio]>=2.8.2
+Provides-Extra: dev
+Requires-Dist: pytest<9.0,>=8.0; extra == "dev"

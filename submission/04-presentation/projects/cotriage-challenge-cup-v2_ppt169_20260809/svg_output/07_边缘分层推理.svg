@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="36" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="68" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">功能二：按成本逐层提升边缘推理能力</text>
+    <text x="72" y="105" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">高频明确事件快速命中，复杂与不确定事件逐层升级，并保留降级通道</text>
+    <text x="1232" y="64" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">05  EDGE AI</text>
+  </g>
+  <g id="inference-panel">
+    <rect x="48" y="132" width="720" height="456" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="70" y="162" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#163A5F">推理趋势与路径构成</text>
+    <image x="64" y="176" width="688" height="389" xlink:href="../images/s-02c-inference-trend-and-distribution.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="inference-ladder">
+    <text x="792" y="154" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">边缘侧四级能力阶梯</text>
+    <rect x="792" y="171" width="440" height="48" rx="12" fill="#163A5F"/>
+    <text x="812" y="201" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">01  规则命中</text>
+    <text x="1206" y="201" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">明确模式 · 直接解释</text>
+    <rect x="824" y="227" width="408" height="48" rx="12" fill="#16A6B6"/>
+    <text x="844" y="257" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">02  模板 / CACHE</text>
+    <text x="1206" y="257" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#FFFFFF">相似事件 · 复用结果</text>
+    <rect x="856" y="283" width="376" height="48" rx="12" fill="#FFFFFF" stroke="#16A6B6" stroke-width="2"/>
+    <text x="876" y="313" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">03  MiniLM 轻量模型</text>
+    <text x="1206" y="313" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">语义识别 · 低资源</text>
+    <rect x="888" y="339" width="344" height="48" rx="12" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+    <text x="908" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">04  边缘小语言模型</text>
+    <text x="1206" y="369" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#F59E0B">复杂解释 · 按需启用</text>
+  </g>
+  <g id="anomaly-panel">
+    <rect x="792" y="408" width="440" height="180" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <image x="804" y="421" width="416" height="148" xlink:href="../images/s-03-anomaly-trend-analysis-redacted.png" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="808" y="548" width="154" height="24" rx="12" fill="#163A5F"/>
+    <text x="885" y="565" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">历史日志样本回放</text>
+  </g>
+  <g id="conclusion-strip">
+    <rect x="48" y="608" width="1184" height="52" rx="14" fill="#E9EEF3"/>
+    <use data-icon="chunk-filled/layers" x="70" y="619" width="30" height="30" fill="#16A6B6"/>
+    <text x="116" y="642" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#163A5F">统一接口承接每一级结果：命中则就地返回，不确定则继续升级，资源不足则安全降级</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">边缘分层推理</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">07</text>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="34" width="8" height="46" rx="4" fill="#163A5F"/>
+    <text x="72" y="66" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">附录 D：工程部署与完整配置管理</text>
+    <text x="72" y="102" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">服务、消息、存储、管理 API 与在线配置解耦，便于独立部署和能力替换</text>
+    <rect x="1128" y="42" width="104" height="34" rx="17" fill="#E9EEF3"/>
+    <text x="1180" y="65" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#60758A">Q&amp;A  D</text>
+  </g>
+  <g id="service-rail">
+    <text x="48" y="144" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">数据面与应用服务</text>
+    <line x1="134" y1="215" x2="1146" y2="215" stroke="#CBD7E3" stroke-width="5"/>
+    <rect x="64" y="172" width="190" height="86" rx="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/factory" x="82" y="194" width="36" height="36" fill="#FFFFFF"/>
+    <text x="132" y="205" font-family="Consolas, Courier New, monospace" font-size="17" font-weight="700" fill="#FFFFFF">log-collector</text>
+    <text x="132" y="231" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF">采集与事件规整</text>
+    <polygon points="270,205 290,215 270,225" fill="#16A6B6"/>
+    <rect x="300" y="172" width="190" height="86" rx="16" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/layers" x="318" y="194" width="36" height="36" fill="#FFFFFF"/>
+    <text x="368" y="205" font-family="Consolas, Courier New, monospace" font-size="17" font-weight="700" fill="#FFFFFF">edge-infer</text>
+    <text x="368" y="231" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF">分层推理与降级</text>
+    <polygon points="506,205 526,215 506,225" fill="#16A6B6"/>
+    <rect x="536" y="172" width="208" height="86" rx="16" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/route" x="554" y="194" width="36" height="36" fill="#FFFFFF"/>
+    <text x="604" y="205" font-family="Consolas, Courier New, monospace" font-size="16" font-weight="700" fill="#FFFFFF">router-controller</text>
+    <text x="604" y="231" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF">RAISE 与 Outbox</text>
+    <polygon points="760,205 780,215 760,225" fill="#16A6B6"/>
+    <rect x="790" y="172" width="190" height="86" rx="16" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/cloud" x="808" y="194" width="36" height="36" fill="#FFFFFF"/>
+    <text x="858" y="205" font-family="Consolas, Courier New, monospace" font-size="16" font-weight="700" fill="#FFFFFF">cloud-gateway</text>
+    <text x="858" y="231" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF">上下文聚合与深诊</text>
+    <polygon points="996,205 1016,215 996,225" fill="#16A6B6"/>
+    <rect x="1026" y="172" width="190" height="86" rx="16" fill="#163A5F"/>
+    <use data-icon="chunk-filled/server" x="1044" y="194" width="36" height="36" fill="#FFFFFF"/>
+    <text x="1094" y="205" font-family="Consolas, Courier New, monospace" font-size="17" font-weight="700" fill="#FFFFFF">server / Web</text>
+    <text x="1094" y="231" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF">快照、SSE 与管理界面</text>
+  </g>
+  <g id="infrastructure">
+    <rect x="64" y="286" width="1152" height="104" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <rect x="88" y="308" width="318" height="60" rx="14" fill="#E9EEF3"/>
+    <use data-icon="chunk-filled/database" x="108" y="322" width="32" height="32" fill="#16A6B6"/>
+    <text x="156" y="334" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">Redis Streams</text>
+    <text x="156" y="357" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#60758A">事件阶段流转与消费者组</text>
+    <rect x="430" y="308" width="318" height="60" rx="14" fill="#E9EEF3"/>
+    <use data-icon="chunk-filled/database" x="450" y="322" width="32" height="32" fill="#F59E0B"/>
+    <text x="498" y="334" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">MySQL</text>
+    <text x="498" y="357" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#60758A">业务状态、Outbox 与诊断反馈</text>
+    <rect x="772" y="308" width="420" height="60" rx="14" fill="#E9EEF3"/>
+    <use data-icon="chunk-filled/link" x="792" y="322" width="32" height="32" fill="#163A5F"/>
+    <text x="840" y="334" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" font-weight="700" fill="#163A5F">REST + SSE</text>
+    <text x="840" y="357" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#60758A">配置与快照接口 + Web 增量状态推送</text>
+  </g>
+  <g id="configuration-gallery">
+    <text x="48" y="426" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">配置治理页面</text>
+    <rect x="64" y="444" width="360" height="198" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="82" y="470" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="700" fill="#163A5F">规则版本与启停</text>
+    <image x="76" y="482" width="336" height="150" xlink:href="../images/s-08a-rule-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="460" y="444" width="360" height="198" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="478" y="470" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="700" fill="#163A5F">MiniLM 模型发布状态</text>
+    <image x="472" y="482" width="336" height="150" xlink:href="../images/s-09a-minilm-model-management.png" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="856" y="444" width="360" height="198" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <text x="874" y="470" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" font-weight="700" fill="#163A5F">云端 Provider 与掩码参数</text>
+    <image x="868" y="482" width="336" height="150" xlink:href="../images/s-09c-cloud-provider-management.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">问答附录 D</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">19</text>
+  </g>
+</svg>

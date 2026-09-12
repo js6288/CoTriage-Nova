@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="40" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="72" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">多节点日志、推理状态与路由结果实时汇聚</text>
+    <text x="72" y="108" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">统一驾驶舱把数据接入、智能处理和传输状态组织为一条可观察主链</text>
+    <text x="1232" y="68" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">02  PRODUCT</text>
+  </g>
+  <g id="dashboard-frame">
+    <rect x="48" y="136" width="906" height="536" rx="16" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="2"/>
+    <rect x="48" y="136" width="906" height="30" rx="16" fill="#E9EEF3"/>
+    <rect x="48" y="151" width="906" height="15" fill="#E9EEF3"/>
+    <circle cx="68" cy="151" r="4" fill="#C62828"/>
+    <circle cx="83" cy="151" r="4" fill="#F59E0B"/>
+    <circle cx="98" cy="151" r="4" fill="#2E7D32"/>
+    <image x="60" y="176" width="882" height="484" xlink:href="../images/s-01-realtime-dashboard.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="observation-panel">
+    <text x="982" y="156" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#60758A">五个观察区</text>
+    <rect x="978" y="174" width="254" height="82" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1008" cy="215" r="18" fill="#163A5F"/>
+    <text x="1008" y="221" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">1</text>
+    <text x="1040" y="207" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">实时接入</text>
+    <text x="1040" y="233" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">多节点事件持续进入</text>
+
+    <rect x="978" y="266" width="254" height="82" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1008" cy="307" r="18" fill="#16A6B6"/>
+    <text x="1008" y="313" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">2</text>
+    <text x="1040" y="299" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">推理状态</text>
+    <text x="1040" y="325" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">路径与时延同屏呈现</text>
+
+    <rect x="978" y="358" width="254" height="82" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1008" cy="399" r="18" fill="#C62828"/>
+    <text x="1008" y="405" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">3</text>
+    <text x="1040" y="391" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">异常态势</text>
+    <text x="1040" y="417" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">风险事件优先聚焦</text>
+
+    <rect x="978" y="450" width="254" height="82" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1008" cy="491" r="18" fill="#F59E0B"/>
+    <text x="1008" y="497" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">4</text>
+    <text x="1040" y="483" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">路由解释</text>
+    <text x="1040" y="509" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">决策条件可追踪</text>
+
+    <rect x="978" y="542" width="254" height="82" rx="14" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1008" cy="583" r="18" fill="#60758A"/>
+    <text x="1008" y="589" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">5</text>
+    <text x="1040" y="575" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" font-weight="700" fill="#1D2F42">Outbox 状态</text>
+    <text x="1040" y="601" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">延期与补传过程留痕</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="684" x2="1232" y2="684" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="706" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">系统总览</text>
+    <text x="1232" y="706" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">04</text>
+  </g>
+</svg>

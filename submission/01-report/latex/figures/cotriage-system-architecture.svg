@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">CoTriage 云边协同智能故障感知与决策系统架构</title>
+  <desc id="desc">展示多节点日志采集、边缘分层推理、RAISE 动态路由、弱网 Outbox、云端诊断反馈，以及在线配置与可观测控制面的企业级系统架构图。</desc>
+
+  <defs>
+    <!-- 统一箭头：颜色与线型同时编码，保证灰度打印仍可区分。 -->
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#11A8B5"/>
+    </marker>
+    <marker id="arrow-navy" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#163A5F"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2674D9"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#E97924"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#C74343"/>
+    </marker>
+    <marker id="arrow-navy-small" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#163A5F"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#163A5F" flood-opacity="0.12"/>
+    </filter>
+    <linearGradient id="title-gradient" x1="0" x2="1">
+      <stop offset="0" stop-color="#102F4D"/>
+      <stop offset="1" stop-color="#163A5F"/>
+    </linearGradient>
+    <style>
+      .zh { font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; }
+      .mono { font-family: "JetBrains Mono", "Cascadia Mono", "Consolas", monospace; }
+      .panel { fill: #FFFFFF; stroke: #B9C8D8; stroke-width: 1.5; }
+      .panel-head { fill: #163A5F; }
+      .module { fill: #FFFFFF; stroke: #8FA7BF; stroke-width: 1.6; filter: url(#shadow); }
+      .module-soft { fill: #F7FAFD; stroke: #B9C8D8; stroke-width: 1.4; }
+      .module-cyan { fill: #F0FBFC; stroke: #11A8B5; stroke-width: 1.8; }
+      .module-blue { fill: #F1F6FD; stroke: #2674D9; stroke-width: 1.8; }
+      .module-orange { fill: #FFF7F0; stroke: #E97924; stroke-width: 1.8; }
+      .module-red { fill: #FFF3F3; stroke: #C74343; stroke-width: 1.6; }
+      .title { fill: #FFFFFF; font-size: 40px; font-weight: 700; letter-spacing: 1px; }
+      .subtitle { fill: #CFE0EF; font-size: 15px; letter-spacing: .5px; }
+      .panel-title { fill: #FFFFFF; font-size: 22px; font-weight: 700; }
+      .module-title { fill: #163A5F; font-size: 17px; font-weight: 700; }
+      .body { fill: #263B50; font-size: 14px; }
+      .body-sm { fill: #40566C; font-size: 12.5px; }
+      .caption { fill: #5D7186; font-size: 12px; }
+      .collector-title { fill: #163A5F; font-size: 12.5px; font-weight: 700; }
+      .collector-caption { fill: #5D7186; font-size: 10.5px; }
+      .chip { fill: #F7FAFD; stroke: #2674D9; stroke-width: 1.4; }
+      .chip-text { fill: #163A5F; font-size: 13px; font-weight: 700; }
+      .action { fill: #FFFFFF; font-size: 14px; font-weight: 800; letter-spacing: .5px; }
+      .flow { fill: none; stroke: #11A8B5; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-cyan); }
+      .flow-bus { fill: none; stroke: #11A8B5; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .state { fill: none; stroke: #163A5F; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-navy); }
+      .state-mini { fill: none; stroke: #163A5F; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-navy-small); }
+      .state-bus { fill: none; stroke: #163A5F; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+      .control { fill: none; stroke: #2674D9; stroke-width: 2.6; stroke-dasharray: 10 7; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-blue); }
+      .control-bus { fill: none; stroke: #2674D9; stroke-width: 2.6; stroke-dasharray: 10 7; stroke-linecap: round; stroke-linejoin: round; }
+      .feedback { fill: none; stroke: #E97924; stroke-width: 2.8; stroke-dasharray: 12 7; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-orange); }
+      .defer { fill: none; stroke: #E97924; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-orange); }
+      .failure { fill: none; stroke: #C74343; stroke-width: 2.4; stroke-dasharray: 7 5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-red); }
+      .divider { stroke: #D9E3EC; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- 背景与标题区。 -->
+  <rect width="1920" height="1080" fill="#F4F7FA"/>
+  <rect x="0" y="0" width="1920" height="82" fill="url(#title-gradient)"/>
+  <text x="48" y="50" class="zh title">CoTriage 云边协同智能故障感知与决策系统</text>
+  <text x="1870" y="33" text-anchor="end" class="zh subtitle">事件驱动 · 分层推理 · 动态路由 · 弱网自治 · 反馈闭环</text>
+  <g class="zh" transform="translate(1455,51)">
+    <line x1="0" y1="0" x2="34" y2="0" class="flow"/>
+    <text x="43" y="5" class="subtitle">实时事件流</text>
+    <line x1="145" y1="0" x2="179" y2="0" class="control"/>
+    <text x="188" y="5" class="subtitle">在线配置</text>
+    <line x1="286" y1="0" x2="320" y2="0" class="feedback"/>
+    <text x="329" y="5" class="subtitle">重放 / 反馈</text>
+  </g>
+
+  <!-- 四个数据面分区。 -->
+  <g class="zh">
+    <rect x="28" y="98" width="380" height="690" rx="12" class="panel"/>
+    <path d="M40 98 H396 Q408 98 408 110 V152 H28 V110 Q28 98 40 98 Z" class="panel-head"/>
+    <text x="218" y="133" text-anchor="middle" class="panel-title">1  多节点日志源</text>
+
+    <rect x="420" y="98" width="455" height="690" rx="12" class="panel"/>
+    <path d="M432 98 H863 Q875 98 875 110 V152 H420 V110 Q420 98 432 98 Z" class="panel-head"/>
+    <text x="648" y="133" text-anchor="middle" class="panel-title">2  边缘智能数据面</text>
+
+    <rect x="887" y="98" width="515" height="690" rx="12" class="panel"/>
+    <path d="M899 98 H1390 Q1402 98 1402 110 V152 H887 V110 Q887 98 899 98 Z" class="panel-head"/>
+    <text x="1145" y="133" text-anchor="middle" class="panel-title">3  弱网可靠性与动态路由</text>
+
+    <rect x="1414" y="98" width="478" height="690" rx="12" class="panel"/>
+    <path d="M1426 98 H1880 Q1892 98 1892 110 V152 H1414 V110 Q1414 98 1426 98 Z" class="panel-head"/>
+    <text x="1653" y="133" text-anchor="middle" class="panel-title">4  云端深度诊断</text>
+  </g>
+
+  <!-- 所有连线先绘制，确保位于模块下方且端点完整附着。 -->
+  <g aria-label="architecture-connectors">
+    <!-- 多节点采集与汇聚。 -->
+    <path d="M145 231 H160" class="flow"/>
+    <path d="M145 401 H160" class="flow"/>
+    <path d="M145 571 H160" class="flow"/>
+    <path d="M260 231 H277 V340" class="flow-bus"/>
+    <path d="M260 401 H277" class="flow-bus"/>
+    <path d="M260 571 H277 V460" class="flow-bus"/>
+    <path d="M277 401 H283" class="flow"/>
+
+    <!-- 统一事件化到边缘推理主链路。 -->
+    <path d="M387 401 H404 V212 H448" class="flow"/>
+    <path d="M648 244 V275" class="flow"/>
+    <path d="M648 608 V665" class="flow"/>
+
+    <!-- inferred 流进入 RAISE；沿分区边界走线，避免穿过模块。 -->
+    <path d="M845 697 H918 V355 H1045" class="flow"/>
+
+    <!-- 六类状态输入 RAISE。 -->
+    <path d="M970 218 V246 H1080 V260" class="state-mini"/>
+    <path d="M1090 218 V260" class="state-mini"/>
+    <path d="M1210 218 V246 H1175 V260" class="state-mini"/>
+    <path d="M1330 218 V246 H1270 V260" class="state-mini"/>
+    <path d="M1025 271 H1045 V335" class="state-mini"/>
+    <path d="M1275 271 H1335 V335" class="state-mini"/>
+
+    <!-- RAISE 三动作分支。 -->
+    <path d="M1100 450 V476 H982 V515" class="state"/>
+    <path d="M1190 450 V476 H1155 V520" class="flow"/>
+    <path d="M1280 450 V476 H1320 V635" class="defer"/>
+
+    <!-- 到期记录从 Outbox 重投 cloud request；不是网络恢复触发。 -->
+    <path d="M1105 635 V615 H1155 V604" class="feedback"/>
+
+    <!-- cloud request 到 cloud-gateway 的在线事件流。 -->
+    <path d="M1230 562 H1430 V265 H1440" class="flow"/>
+    <path d="M1570 365 V405" class="flow"/>
+    <path d="M1570 463 V500" class="flow"/>
+    <path d="M1570 650 V690" class="flow"/>
+    <path d="M1610 720 H1645" class="flow"/>
+
+    <!-- cloud.resp 是独立终端输出，不连接 Web。 -->
+    <path d="M1700 270 H1722 V462 H1740" class="state"/>
+
+    <!-- 云端反馈沿顶部回写 RAISE，仅标注部分接入。 -->
+    <path d="M1780 726 H1820 V164 H1245 V260" class="feedback"/>
+
+    <!-- 控制面读取总线：inferred、路由与 Outbox 状态汇聚到 Server。 -->
+    <path d="M648 729 V782" class="state-bus"/>
+    <path d="M982 625 V782" class="state-bus"/>
+    <path d="M1210 765 V782" class="state-bus"/>
+    <path d="M648 782 H1210" class="state-bus"/>
+    <path d="M1090 782 V935 H1065" class="state"/>
+    <path d="M1065 935 H1135" class="state"/>
+
+    <!-- 配置发布：配置中心经 Server REST 分别接入 edge-infer 与 cloud-gateway。 -->
+    <path d="M127 951 V980" class="control-bus"/>
+    <path d="M255 951 V980" class="control-bus"/>
+    <path d="M383 951 V980" class="control-bus"/>
+    <path d="M511 951 V980" class="control-bus"/>
+    <path d="M639 951 V980" class="control-bus"/>
+    <path d="M127 980 H745 V935 H815" class="control"/>
+    <path d="M940 900 V790 H875 V570 H847" class="control"/>
+    <path d="M940 900 V790 H1424 V335 H1440" class="control"/>
+  </g>
+
+  <!-- 第一列：多节点采集与统一事件化。 -->
+  <g class="zh">
+    <g>
+      <rect x="48" y="180" width="97" height="102" rx="10" class="module-soft"/>
+      <circle cx="96" cy="208" r="12" fill="#E8F3FD" stroke="#2674D9" stroke-width="1.5"/>
+      <path d="M88 209 L94 215 L105 201" fill="none" stroke="#2674D9" stroke-width="2.5"/>
+      <text x="96" y="244" text-anchor="middle" class="module-title">工业设备</text>
+      <text x="96" y="265" text-anchor="middle" class="body-sm">节点 A</text>
+    </g>
+    <g>
+      <rect x="48" y="350" width="97" height="102" rx="10" class="module-soft"/>
+      <rect x="78" y="376" width="36" height="7" rx="3" fill="#2674D9"/>
+      <rect x="78" y="389" width="36" height="7" rx="3" fill="#2674D9" opacity=".8"/>
+      <rect x="78" y="402" width="36" height="7" rx="3" fill="#2674D9" opacity=".6"/>
+      <text x="96" y="425" text-anchor="middle" class="module-title">生产服务</text>
+      <text x="96" y="446" text-anchor="middle" class="body-sm">节点 B</text>
+    </g>
+    <g>
+      <rect x="48" y="520" width="97" height="102" rx="10" class="module-soft"/>
+      <path d="M75 550 H117 M81 542 H111 M83 558 H109" fill="none" stroke="#2674D9" stroke-width="4" stroke-linecap="round"/>
+      <text x="96" y="585" text-anchor="middle" class="module-title">基础设施</text>
+      <text x="96" y="606" text-anchor="middle" class="body-sm">节点 N</text>
+    </g>
+
+    <g>
+      <rect x="160" y="196" width="100" height="70" rx="9" class="module-cyan"/>
+      <text x="210" y="225" text-anchor="middle" class="collector-title mono">log-collector</text>
+      <text x="210" y="248" text-anchor="middle" class="collector-caption">DaemonSet 就近采集</text>
+    </g>
+    <g>
+      <rect x="160" y="366" width="100" height="70" rx="9" class="module-cyan"/>
+      <text x="210" y="395" text-anchor="middle" class="collector-title mono">log-collector</text>
+      <text x="210" y="418" text-anchor="middle" class="collector-caption">DaemonSet 就近采集</text>
+    </g>
+    <g>
+      <rect x="160" y="536" width="100" height="70" rx="9" class="module-cyan"/>
+      <text x="210" y="565" text-anchor="middle" class="collector-title mono">log-collector</text>
+      <text x="210" y="588" text-anchor="middle" class="collector-caption">DaemonSet 就近采集</text>
+    </g>
+
+    <g>
+      <rect x="283" y="332" width="104" height="138" rx="10" class="module"/>
+      <text x="335" y="363" text-anchor="middle" class="module-title">统一事件化</text>
+      <line x1="297" y1="377" x2="373" y2="377" class="divider"/>
+      <text x="335" y="399" text-anchor="middle" class="body-sm mono">event_id · ts</text>
+      <text x="335" y="421" text-anchor="middle" class="body-sm mono">equipment</text>
+      <text x="335" y="443" text-anchor="middle" class="body-sm mono">source · raw_log</text>
+    </g>
+    <text x="218" y="676" text-anchor="middle" class="caption">节点级采集、统一事件契约、全链路 event_id 关联</text>
+  </g>
+
+  <!-- 第二列：Redis Streams 与分层边缘推理。 -->
+  <g class="zh">
+    <g>
+      <rect x="448" y="180" width="400" height="64" rx="12" class="module-cyan"/>
+      <text x="648" y="207" text-anchor="middle" class="module-title mono">Redis Streams</text>
+      <text x="648" y="230" text-anchor="middle" class="body-sm mono">cotriage.events.raw</text>
+    </g>
+
+    <g>
+      <rect x="448" y="275" width="400" height="333" rx="12" class="module"/>
+      <rect x="448" y="275" width="400" height="45" rx="12" fill="#EAF1F7"/>
+      <rect x="448" y="305" width="400" height="15" fill="#EAF1F7"/>
+      <text x="648" y="304" text-anchor="middle" class="module-title mono">edge-infer  分层推理</text>
+
+      <rect x="468" y="343" width="78" height="118" rx="9" class="module-soft"/>
+      <circle cx="507" cy="363" r="13" fill="#163A5F"/>
+      <text x="507" y="368" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">1</text>
+      <text x="507" y="397" text-anchor="middle" class="module-title">规则</text>
+      <text x="507" y="421" text-anchor="middle" class="caption mono">RULE</text>
+      <text x="507" y="444" text-anchor="middle" class="caption">确定快速</text>
+
+      <rect x="562" y="343" width="78" height="118" rx="9" class="module-soft"/>
+      <circle cx="601" cy="363" r="13" fill="#163A5F"/>
+      <text x="601" y="368" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">2</text>
+      <text x="601" y="397" text-anchor="middle" class="module-title">模板</text>
+      <text x="601" y="421" text-anchor="middle" class="caption mono">TEMPLATE</text>
+      <text x="601" y="444" text-anchor="middle" class="caption">知识复用</text>
+
+      <rect x="656" y="343" width="78" height="118" rx="9" class="module-soft"/>
+      <circle cx="695" cy="363" r="13" fill="#163A5F"/>
+      <text x="695" y="368" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">3</text>
+      <text x="695" y="395" text-anchor="middle" class="module-title">轻量模型</text>
+      <text x="695" y="417" text-anchor="middle" class="caption mono">MiniLM</text>
+      <text x="695" y="439" text-anchor="middle" class="caption mono">ONNX</text>
+
+      <rect x="750" y="343" width="78" height="118" rx="9" class="module-soft"/>
+      <circle cx="789" cy="363" r="13" fill="#163A5F"/>
+      <text x="789" y="368" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">4</text>
+      <text x="789" y="394" text-anchor="middle" class="module-title">边缘小</text>
+      <text x="789" y="415" text-anchor="middle" class="module-title">语言模型</text>
+      <text x="789" y="439" text-anchor="middle" class="caption mono">EDGE SLM</text>
+
+      <path d="M546 402 H562 M640 402 H656 M734 402 H750" class="state-mini"/>
+
+      <rect x="468" y="484" width="360" height="42" rx="8" fill="#F8FAFC" stroke="#8FA7BF" stroke-width="1.2" stroke-dasharray="7 5"/>
+      <text x="648" y="510" text-anchor="middle" class="body mono" font-weight="700">FALLBACK / UNKNOWN</text>
+
+      <rect x="468" y="544" width="360" height="42" rx="8" fill="#163A5F"/>
+      <text x="648" y="570" text-anchor="middle" fill="#FFFFFF" font-size="13.5" font-weight="700">类别 · 严重度 · 置信度 · 不确定性 · 证据</text>
+    </g>
+
+    <g>
+      <rect x="448" y="665" width="400" height="64" rx="12" class="module-cyan"/>
+      <text x="648" y="692" text-anchor="middle" class="module-title mono">Redis Streams</text>
+      <text x="648" y="715" text-anchor="middle" class="body-sm mono">cotriage.events.inferred</text>
+    </g>
+  </g>
+
+  <!-- 第三列：联合感知、RAISE 三动作与 Outbox。 -->
+  <g class="zh">
+    <g>
+      <rect x="915" y="178" width="110" height="40" rx="8" class="chip"/>
+      <text x="970" y="203" text-anchor="middle" class="chip-text">网络状态</text>
+      <rect x="1035" y="178" width="110" height="40" rx="8" class="chip"/>
+      <text x="1090" y="203" text-anchor="middle" class="chip-text">调用预算</text>
+      <rect x="1155" y="178" width="110" height="40" rx="8" class="chip"/>
+      <text x="1210" y="203" text-anchor="middle" class="chip-text">故障风险</text>
+      <rect x="1275" y="178" width="110" height="40" rx="8" class="chip"/>
+      <text x="1330" y="196" text-anchor="middle" class="chip-text">模型</text>
+      <text x="1330" y="212" text-anchor="middle" class="chip-text">不确定性</text>
+      <rect x="915" y="231" width="110" height="40" rx="8" class="chip"/>
+      <text x="970" y="256" text-anchor="middle" class="chip-text">队列压力</text>
+      <rect x="1275" y="231" width="110" height="40" rx="8" class="chip"/>
+      <text x="1330" y="256" text-anchor="middle" class="chip-text">运维硬策略</text>
+    </g>
+
+    <g>
+      <rect x="1045" y="260" width="290" height="190" rx="14" class="module-orange" filter="url(#shadow)"/>
+      <rect x="1045" y="260" width="290" height="48" rx="14" fill="#E97924"/>
+      <rect x="1045" y="294" width="290" height="14" fill="#E97924"/>
+      <text x="1190" y="292" text-anchor="middle" fill="#FFFFFF" font-size="19" font-weight="800">RAISE 动态路由中心</text>
+      <rect x="1070" y="327" width="240" height="42" rx="8" fill="#FFFFFF" stroke="#E6B589" stroke-width="1.2"/>
+      <text x="1190" y="354" text-anchor="middle" class="module-title">价值 / 增益 / 成本</text>
+      <rect x="1070" y="383" width="240" height="42" rx="8" fill="#FFFFFF" stroke="#E6B589" stroke-width="1.2"/>
+      <text x="1190" y="410" text-anchor="middle" class="module-title">动态阈值 + 可解释原因</text>
+    </g>
+
+    <g>
+      <rect x="922" y="466" width="78" height="30" rx="15" fill="#163A5F"/>
+      <text x="961" y="487" text-anchor="middle" class="action mono">LOCAL</text>
+      <rect x="1116" y="466" width="78" height="30" rx="15" fill="#11A8B5"/>
+      <text x="1155" y="487" text-anchor="middle" class="action mono">CLOUD</text>
+      <rect x="1278" y="466" width="78" height="30" rx="15" fill="#E97924"/>
+      <text x="1317" y="487" text-anchor="middle" class="action mono">DEFER</text>
+    </g>
+
+    <g>
+      <rect x="910" y="515" width="145" height="110" rx="10" class="module"/>
+      <text x="982" y="548" text-anchor="middle" class="module-title">本地结果 / 现场系统</text>
+      <line x1="928" y1="562" x2="1037" y2="562" class="divider"/>
+      <text x="982" y="587" text-anchor="middle" class="body-sm">形成路由记录</text>
+      <text x="982" y="607" text-anchor="middle" class="caption">核心仓库不内置执行器</text>
+    </g>
+
+    <g>
+      <rect x="1080" y="520" width="150" height="84" rx="10" class="module-cyan"/>
+      <text x="1155" y="554" text-anchor="middle" class="module-title mono">cloud request</text>
+      <text x="1155" y="579" text-anchor="middle" class="caption mono">cotriage.events.cloud.req</text>
+    </g>
+
+    <g>
+      <rect x="1060" y="635" width="300" height="130" rx="12" class="module-orange"/>
+      <text x="1210" y="661" text-anchor="middle" class="module-title mono">Priority Outbox</text>
+      <text x="1210" y="686" text-anchor="middle" class="body-sm mono">PENDING  →  SENDING  →  SENT</text>
+      <text x="1210" y="709" text-anchor="middle" class="body-sm">失败 → RETRY（指数退避）</text>
+      <text x="1210" y="732" text-anchor="middle" fill="#C74343" font-size="12.5" font-weight="700">超限 → DLQ</text>
+      <text x="1210" y="753" text-anchor="middle" class="caption">到期任务：路由分数 → 截止时间 → 创建时间</text>
+    </g>
+    <text x="1108" y="624" class="caption" fill="#E97924">到期优先重放</text>
+  </g>
+
+  <!-- 第四列：云端诊断、持久化与反馈。 -->
+  <g class="zh">
+    <g>
+      <rect x="1440" y="180" width="260" height="185" rx="12" class="module-blue"/>
+      <text x="1570" y="209" text-anchor="middle" class="module-title mono">cloud-gateway</text>
+      <rect x="1460" y="226" width="220" height="34" rx="7" fill="#FFFFFF" stroke="#AFC7E1"/>
+      <circle cx="1478" cy="243" r="10" fill="#163A5F"/>
+      <text x="1478" y="248" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">1</text>
+      <text x="1500" y="248" class="body">相关上下文聚合</text>
+      <rect x="1460" y="270" width="220" height="34" rx="7" fill="#FFFFFF" stroke="#AFC7E1"/>
+      <circle cx="1478" cy="287" r="10" fill="#163A5F"/>
+      <text x="1478" y="292" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">2</text>
+      <text x="1500" y="292" class="body">日志脱敏与 Token 裁剪</text>
+      <rect x="1460" y="314" width="220" height="34" rx="7" fill="#FFFFFF" stroke="#AFC7E1"/>
+      <circle cx="1478" cy="331" r="10" fill="#163A5F"/>
+      <text x="1478" y="336" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">3</text>
+      <text x="1500" y="336" class="body">幂等请求与失败分类</text>
+    </g>
+
+    <g>
+      <rect x="1440" y="405" width="260" height="58" rx="10" class="module-cyan"/>
+      <text x="1570" y="440" text-anchor="middle" class="module-title">OpenAI-compatible 云端模型</text>
+    </g>
+
+    <g>
+      <rect x="1440" y="500" width="260" height="150" rx="12" class="module"/>
+      <rect x="1440" y="500" width="260" height="40" rx="12" fill="#EAF1F7"/>
+      <rect x="1440" y="528" width="260" height="12" fill="#EAF1F7"/>
+      <text x="1570" y="526" text-anchor="middle" class="module-title">结构化诊断</text>
+      <text x="1570" y="566" text-anchor="middle" class="body">故障类别 / 根因</text>
+      <text x="1570" y="592" text-anchor="middle" class="body">处置建议 / 解释</text>
+      <text x="1570" y="618" text-anchor="middle" class="body">置信度 / Token / 时延</text>
+    </g>
+
+    <g>
+      <rect x="1450" y="690" width="160" height="60" rx="10" class="module-blue"/>
+      <text x="1530" y="716" text-anchor="middle" class="module-title mono">MySQL</text>
+      <text x="1530" y="738" text-anchor="middle" class="body-sm mono">cloud_feedback</text>
+    </g>
+
+    <g>
+      <rect x="1645" y="694" width="135" height="64" rx="10" class="module-orange"/>
+      <text x="1712" y="720" text-anchor="middle" class="module-title mono">feedback</text>
+      <text x="1712" y="742" text-anchor="middle" class="body-sm mono">processor</text>
+    </g>
+
+    <g>
+      <rect x="1740" y="425" width="130" height="75" rx="10" class="module-soft"/>
+      <text x="1805" y="455" text-anchor="middle" class="module-title mono">cloud.resp</text>
+      <text x="1805" y="479" text-anchor="middle" class="caption">当前无内容消费者</text>
+    </g>
+
+    <rect x="1452" y="153" width="402" height="24" rx="12" fill="#FFF7F0" stroke="#E97924" stroke-width="1"/>
+    <text x="1653" y="170" text-anchor="middle" fill="#C75E10" font-size="12" font-weight="700">历史分歧与 UCB 状态更新（部分接入）</text>
+  </g>
+
+  <!-- 底部控制面：配置发布、统一 API 与可观测大盘。 -->
+  <g class="zh">
+    <rect x="28" y="810" width="1864" height="225" rx="14" fill="#FFFFFF" stroke="#8FA7BF" stroke-width="1.5"/>
+    <rect x="28" y="810" width="1864" height="42" rx="14" fill="#E9EEF3"/>
+    <rect x="28" y="838" width="1864" height="14" fill="#E9EEF3"/>
+    <text x="55" y="838" class="module-title">在线配置与可观测控制面</text>
+    <text x="1865" y="838" text-anchor="end" class="caption">数据面持续处理 · 控制面按版本发布 · 查询面统一汇聚</text>
+
+    <g>
+      <text x="70" y="881" class="module-title mono">Server 配置中心</text>
+      <rect x="70" y="892" width="114" height="59" rx="9" class="module-blue"/>
+      <text x="127" y="928" text-anchor="middle" class="body" font-weight="700">规则集</text>
+      <rect x="198" y="892" width="114" height="59" rx="9" class="module-blue"/>
+      <text x="255" y="928" text-anchor="middle" class="body" font-weight="700">模板知识库</text>
+      <rect x="326" y="892" width="114" height="59" rx="9" class="module-blue"/>
+      <text x="383" y="918" text-anchor="middle" class="body" font-weight="700">边缘</text>
+      <text x="383" y="938" text-anchor="middle" class="body" font-weight="700">分类器</text>
+      <rect x="454" y="892" width="114" height="59" rx="9" class="module-blue"/>
+      <text x="511" y="918" text-anchor="middle" class="body" font-weight="700">边缘模型</text>
+      <text x="511" y="938" text-anchor="middle" class="caption mono">Provider</text>
+      <rect x="582" y="892" width="114" height="59" rx="9" class="module-blue"/>
+      <text x="639" y="918" text-anchor="middle" class="body" font-weight="700">云端模型</text>
+      <text x="639" y="938" text-anchor="middle" class="caption mono">Provider</text>
+      <text x="383" y="1007" text-anchor="middle" fill="#2674D9" font-size="13" font-weight="700">版本 / ETag 在线发布</text>
+    </g>
+
+    <g>
+      <rect x="815" y="900" width="250" height="70" rx="12" class="module"/>
+      <text x="940" y="933" text-anchor="middle" class="module-title mono">Server REST / SSE</text>
+      <text x="940" y="956" text-anchor="middle" class="caption">配置 · 查询 · 实时推送</text>
+    </g>
+
+    <g>
+      <text x="1155" y="881" class="module-title mono">Web 可观测大盘</text>
+      <rect x="1155" y="892" width="155" height="59" rx="9" class="module-soft"/>
+      <text x="1232" y="928" text-anchor="middle" class="body" font-weight="700">实时事件流</text>
+      <rect x="1325" y="892" width="155" height="59" rx="9" class="module-soft"/>
+      <text x="1402" y="928" text-anchor="middle" class="body" font-weight="700">异常态势</text>
+      <rect x="1495" y="892" width="155" height="59" rx="9" class="module-soft"/>
+      <text x="1572" y="928" text-anchor="middle" class="body" font-weight="700">路由解释</text>
+      <rect x="1665" y="892" width="155" height="59" rx="9" class="module-soft"/>
+      <text x="1742" y="928" text-anchor="middle" class="body" font-weight="700">Outbox 状态</text>
+      <text x="1487" y="987" text-anchor="middle" class="caption">不宣称展示 cloud.resp 诊断明细</text>
+    </g>
+
+    <text x="1090" y="771" text-anchor="middle" class="caption" fill="#163A5F">事件 / 路由 / Outbox 读取状态</text>
+    <text x="1095" y="808" text-anchor="middle" class="caption" fill="#2674D9">配置发布到 edge-infer 与 cloud-gateway</text>
+
+    <rect x="55" y="1009" width="1810" height="1" fill="#D9E3EC"/>
+    <text x="960" y="1028" text-anchor="middle" class="caption">Kubernetes 边缘集群 · Redis Streams 事件总线 · MySQL 状态与配置存储</text>
+  </g>
+</svg>

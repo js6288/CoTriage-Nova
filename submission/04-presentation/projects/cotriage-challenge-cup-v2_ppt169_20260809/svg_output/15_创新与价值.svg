@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+    <circle cx="110" cy="632" r="190" fill="#16A6B6" fill-opacity="0.06"/>
+    <circle cx="1170" cy="92" r="160" fill="#F59E0B" fill-opacity="0.06"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="42" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="74" font-family="Microsoft YaHei, Arial, sans-serif" font-size="36" font-weight="700" fill="#163A5F">CoTriage 把云边协同组织成可演示、可治理的诊断闭环</text>
+    <text x="72" y="112" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">创新不在于单一模型，而在于感知、推理、路由、传输和治理的协同设计</text>
+    <text x="1232" y="70" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">10  VALUE</text>
+  </g>
+  <g id="innovation-grid">
+    <rect x="64" y="158" width="274" height="326" rx="20" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="201" cy="226" r="46" fill="#163A5F"/>
+    <use data-icon="chunk-filled/layers" x="177" y="202" width="48" height="48" fill="#FFFFFF"/>
+    <text x="201" y="304" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#163A5F">分层推理</text>
+    <text x="201" y="342" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">规则、模板、轻量模型</text>
+    <text x="201" y="368" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">与边缘小语言模型协同</text>
+    <rect x="99" y="414" width="204" height="38" rx="19" fill="#E9EEF3"/>
+    <text x="201" y="439" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">让高频事件就近分诊</text>
+
+    <rect x="356" y="158" width="274" height="326" rx="20" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="493" cy="226" r="46" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/route" x="469" y="202" width="48" height="48" fill="#FFFFFF"/>
+    <text x="493" y="304" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#163A5F">动态路由</text>
+    <text x="493" y="342" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">网络、预算、风险</text>
+    <text x="493" y="368" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">与不确定性联合感知</text>
+    <rect x="391" y="414" width="204" height="38" rx="19" fill="#E9EEF3"/>
+    <text x="493" y="439" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">让高价值事件按需上云</text>
+
+    <rect x="648" y="158" width="274" height="326" rx="20" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="785" cy="226" r="46" fill="#60758A"/>
+    <use data-icon="chunk-filled/wifi-slash" x="761" y="202" width="48" height="48" fill="#FFFFFF"/>
+    <text x="785" y="304" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#163A5F">弱网延期</text>
+    <text x="785" y="342" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">Outbox 持久化、优先补传</text>
+    <text x="785" y="368" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">重试、留痕与死信处理</text>
+    <rect x="683" y="414" width="204" height="38" rx="19" fill="#E9EEF3"/>
+    <text x="785" y="439" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">让现场主链保持自治</text>
+
+    <rect x="940" y="158" width="274" height="326" rx="20" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="1.5"/>
+    <circle cx="1077" cy="226" r="46" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/sliders" x="1053" y="202" width="48" height="48" fill="#FFFFFF"/>
+    <text x="1077" y="304" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24" font-weight="700" fill="#163A5F">在线治理</text>
+    <text x="1077" y="342" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">规则、模型与 Provider</text>
+    <text x="1077" y="368" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#60758A">通过统一管理中心组织</text>
+    <rect x="975" y="414" width="204" height="38" rx="19" fill="#E9EEF3"/>
+    <text x="1077" y="439" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#1D2F42">让系统持续演进可控</text>
+  </g>
+  <g id="closing-statement">
+    <rect x="160" y="526" width="960" height="108" rx="24" fill="#163A5F"/>
+    <text x="640" y="571" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">多节点感知  →  实时分诊  →  按需深诊  →  反馈治理</text>
+    <text x="640" y="608" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#FFFFFF">面向工业现场，把有限边缘资源和强云端能力用在最合适的事件上</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="680" x2="1232" y2="680" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="704" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">创新与应用价值</text>
+    <text x="1232" y="704" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">15</text>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cotriage-server
+  namespace: cotriage
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cotriage-server-reader
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cotriage-server-reader
+subjects:
+  - kind: ServiceAccount
+    name: cotriage-server
+    namespace: cotriage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cotriage-server-reader
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: cotriage
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: server }
+  template:
+    metadata:
+      labels: { app: server }
+    spec:
+      serviceAccountName: cotriage-server
+      containers:
+        - name: server
+          image: crpi-fq916lepz6l0u7gr.cn-guangzhou.personal.cr.aliyuncs.com/pangjian001/server:v0.0.1-202608091250
+          imagePullPolicy: Always
+          ports:
+            - { name: http, containerPort: 8080 }
+          env:
+            - { name: REDIS_ADDR, value: "redis:6379" }
+            - name: MYSQL_PASSWORD
+              valueFrom: { secretKeyRef: { name: mysql-secret, key: MYSQL_PASSWORD } }
+            - { name: MYSQL_DSN, value: "cotriage:$(MYSQL_PASSWORD)@tcp(mysql:3306)/cotriage?charset=utf8mb4&parseTime=true&loc=UTC" }
+            - { name: COTRIAGE_NAMESPACE, value: "cotriage" }
+            - name: CLOUD_GATEWAY_CONFIG_TOKEN
+              valueFrom: { secretKeyRef: { name: cloud-gateway-config-auth, key: token } }
+          readinessProbe: { httpGet: { path: /api/v1/dashboard/summary, port: http }, initialDelaySeconds: 8, periodSeconds: 10 }
+          resources:
+            requests: { cpu: 50m, memory: 96Mi }
+            limits: { cpu: 500m, memory: 512Mi }
+      imagePullSecrets: [{ name: docker-registry-secret }]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+  namespace: cotriage
+spec:
+  selector: { app: server }
+  ports: [{ name: http, port: 8080, targetPort: http }]

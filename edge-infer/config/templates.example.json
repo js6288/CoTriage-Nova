@@ -1,0 +1,12 @@
+[
+  {
+    "template_text": "failed to connect to mysql at <IP>:<NUM>: connection refused",
+    "edge_pred": "NET_ERROR",
+    "severity": 80,
+    "confidence": 0.95,
+    "evidence": ["connection refused"],
+    "advice_code": "CHECK_MYSQL_CONNECTIVITY",
+    "advice": "检查MySQL服务、端口监听和网络连通性"
+  }
+]
+

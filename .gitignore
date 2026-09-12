@@ -1,0 +1,89 @@
+# macOS and editor metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Credentials and secrets
+**/secret.yaml
+**/secret.yml
+**/secrets.yaml
+**/secrets.yml
+*credential*
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.csr
+*.keystore
+
+# Kubernetes local access files
+kind-host
+*kubeconfig*
+*.kubeconfig
+
+# Temporary files and generated debug binaries
+tmp/
+temp/
+*.tmp
+*.temp
+*.log
+__debug_bin*
+debug.test
+
+# Generic caches
+.cache/
+**/.cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.coverage
+htmlcov/
+
+# Go build and test artifacts
+bin/
+coverage.out
+*.test
+*.prof
+
+# Node/Vite build artifacts
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Common generated archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Local datasets and generated training artifacts
+dataset/*
+!dataset/README.md
+!dataset/*.py
+!dataset/tests/
+!dataset/tests/**
+!dataset/model-training/
+!dataset/model-training/**
+!dataset/*.example.json
+dataset/model-training/outputs/
+dataset/model-training/runs/
+dataset/model-training/checkpoints/
+dataset/model-training/.cache/
+.runtime/

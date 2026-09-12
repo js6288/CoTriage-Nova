@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+    <circle cx="1180" cy="92" r="128" fill="#16A6B6" fill-opacity="0.06"/>
+  </g>
+  <g id="header">
+    <rect x="48" y="38" width="8" height="46" rx="4" fill="#16A6B6"/>
+    <text x="72" y="70" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#163A5F">一套可运行、可操作的云边协同日志诊断系统</text>
+    <text x="72" y="108" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">从多节点接入、边缘分诊到云端深诊，核心能力均在同一产品界面中组织</text>
+    <text x="1232" y="68" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#16A6B6">02  PRODUCT</text>
+  </g>
+  <g id="product-frame">
+    <rect x="102" y="132" width="1076" height="540" rx="18" fill="#FFFFFF" stroke="#CBD7E3" stroke-width="2"/>
+    <rect x="102" y="132" width="1076" height="34" rx="18" fill="#E9EEF3"/>
+    <rect x="102" y="151" width="1076" height="15" fill="#E9EEF3"/>
+    <circle cx="125" cy="149" r="5" fill="#C62828"/>
+    <circle cx="143" cy="149" r="5" fill="#F59E0B"/>
+    <circle cx="161" cy="149" r="5" fill="#2E7D32"/>
+    <image x="112" y="176" width="1056" height="486" xlink:href="../images/s-00-application-homepage.png" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g id="capability-badges">
+    <rect x="850" y="91" width="104" height="34" rx="17" fill="#163A5F"/>
+    <use data-icon="chunk-filled/checkmark" x="866" y="100" width="16" height="16" fill="#FFFFFF"/>
+    <text x="892" y="114" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">可运行</text>
+    <rect x="964" y="91" width="104" height="34" rx="17" fill="#16A6B6"/>
+    <use data-icon="chunk-filled/sliders" x="980" y="100" width="16" height="16" fill="#FFFFFF"/>
+    <text x="1006" y="114" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">可操作</text>
+    <rect x="1078" y="91" width="104" height="34" rx="17" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/eye" x="1094" y="100" width="16" height="16" fill="#FFFFFF"/>
+    <text x="1120" y="114" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">可观测</text>
+  </g>
+  <g id="footer">
+    <line x1="48" y1="686" x2="1232" y2="686" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="48" y="707" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">作品亮相</text>
+    <text x="1232" y="707" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#60758A">03</text>
+  </g>
+</svg>

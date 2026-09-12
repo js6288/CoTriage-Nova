@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <g id="background">
+    <rect x="0" y="0" width="1280" height="720" fill="#F6F8FB"/>
+    <circle cx="1110" cy="110" r="210" fill="#16A6B6" fill-opacity="0.08"/>
+    <circle cx="1160" cy="70" r="118" fill="#F59E0B" fill-opacity="0.08"/>
+    <text x="1230" y="115" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="64" font-weight="700" fill="#163A5F" fill-opacity="0.08">COTRIAGE</text>
+  </g>
+  <g id="cover-label">
+    <rect x="78" y="70" width="132" height="34" rx="17" fill="#163A5F"/>
+    <text x="144" y="93" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">XH-202606</text>
+    <text x="228" y="93" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="600" fill="#60758A">挑战杯作品答辩</text>
+  </g>
+  <g id="cover-title">
+    <text x="78" y="214" font-family="Microsoft YaHei, Arial, sans-serif" font-size="64" font-weight="700" fill="#163A5F">CoTriage</text>
+    <text x="78" y="280" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#1D2F42">让高频日志<tspan fill="#16A6B6">就近分诊</tspan>，</text>
+    <text x="78" y="334" font-family="Microsoft YaHei, Arial, sans-serif" font-size="38" font-weight="700" fill="#1D2F42">让高价值问题<tspan fill="#F59E0B">按需获得云端能力</tspan></text>
+    <text x="80" y="380" font-family="Microsoft YaHei, Arial, sans-serif" font-size="20" fill="#60758A">面向工业多设备日志的云边协同智能故障感知与决策系统</text>
+  </g>
+  <g id="mechanism-chain">
+    <line x1="128" y1="520" x2="1118" y2="520" stroke="#CBD7E3" stroke-width="4"/>
+    <circle cx="158" cy="520" r="34" fill="#FFFFFF" stroke="#163A5F" stroke-width="3"/>
+    <use data-icon="chunk-filled/factory" x="138" y="500" width="40" height="40" fill="#163A5F"/>
+    <text x="158" y="578" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">多节点日志</text>
+    <circle cx="432" cy="520" r="34" fill="#FFFFFF" stroke="#16A6B6" stroke-width="3"/>
+    <use data-icon="chunk-filled/layers" x="412" y="500" width="40" height="40" fill="#16A6B6"/>
+    <text x="432" y="578" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">边缘分层推理</text>
+    <circle cx="706" cy="520" r="38" fill="#F59E0B"/>
+    <use data-icon="chunk-filled/route" x="684" y="498" width="44" height="44" fill="#FFFFFF"/>
+    <text x="706" y="582" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#F59E0B">RAISE 动态路由</text>
+    <circle cx="980" cy="520" r="34" fill="#FFFFFF" stroke="#16A6B6" stroke-width="3"/>
+    <use data-icon="chunk-filled/cloud" x="960" y="500" width="40" height="40" fill="#16A6B6"/>
+    <text x="980" y="578" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" font-weight="700" fill="#1D2F42">云端按需深诊</text>
+    <polygon points="269,510 289,520 269,530" fill="#CBD7E3"/>
+    <polygon points="543,510 563,520 543,530" fill="#CBD7E3"/>
+    <polygon points="817,510 837,520 817,530" fill="#CBD7E3"/>
+  </g>
+  <g id="cover-footer">
+    <line x1="78" y1="660" x2="1202" y2="660" stroke="#CBD7E3" stroke-width="1"/>
+    <text x="78" y="690" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">作品报告与系统功能展示</text>
+    <text x="1202" y="690" text-anchor="end" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#60758A">2026.08</text>
+  </g>
+</svg>
